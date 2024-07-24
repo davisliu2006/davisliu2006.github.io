@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <title>Davis Liu - Home</title>
+        <link rel="stylesheet" href="css/global.css">
+        <link rel="stylesheet" href="css/icons.css">
+        <link rel="stylesheet" href="css/projects.css">
+        <link rel="stylesheet" href="css/animations.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+        <style>
+            /*front image*/
+            #front-image {
+                position: relative;
+                width: 100%; height: 100vh;
+                overflow: hidden;
+                background-image: linear-gradient(to bottom, rgb(30, 30, 30), rgb(30, 30, 30), rgb(30, 30, 30));
+                background-size: 100%; background-position: center; background-attachment: scroll;
+            }
+            #title-holder {
+                position: absolute;
+                top: 40vh; left: 35%; transform: translate(-50%, -50%);
+                background-color: rgb(100, 100, 100, 0.5);
+                padding: 20px 70px 20px 70px; border-radius: 20px;
+            }
+            #title {
+                font-weight: normal;
+                white-space: pre;
+            }
+            
+            /*about*/
+            #about-profile {
+                float: right;
+                width: 200px; height: 200px;
+                overflow: hidden;
+                border: solid 1px rgb(200, 200, 200);
+                border-radius: 100%
+            }
+            #about-image {
+                width: 100%;
+                transform: translate(0, -7%);
+            }
+        </style>
+
+        <!--header scripts-->
+        <script src="src/slideshows.js"></script>
+        <script src="src/collapsables.js"></script>
+    </head>
+
+    <body>
+        <!--global-->
+        <div id="global">
+            <script src="src/load_global.js"></script>
+        </div>
+
+        <!--main-->
+        <div id="main">
+            <!--title-->
+            <div id="front-image">
+                
+                <div id="title-holder">
+<h1 id="title">{
+&emsp;&emsp;Hi, I am
+&emsp;&emsp;&emsp;&emsp;Davis Liu
+}</h1>
+                    <h3>
+                        <a target="_blank" href="https://github.com/davisliu2006">
+                            <i id="github-icon" class="fa-brands fa-github"></i>
+                        </a>
+                        <a target="_blank" href="https://www.linkedin.com/in/davis-liu-5178b6252/">
+                            <i id="linkedin-icon" class="fa-brands fa-linkedin"></i>
+                        </a>
+                        <a target="_blank" href="about:blank">
+                            <i id="instagram-icon" class="fa-brands fa-instagram"></i>
+                        </a>
+                    </h3>
+                </div>
+            </div>
+
+            <!--about-->
+            <div id="about" class="text-block">
+                <div id="about-profile">
+                    <img id="about-image" src="images/profile.jpg" alt="">
+                </div>
+                <h2>About Me</h2>
+                <p>
+                    Hi, my name is Davis and I am an incoming Software Engineering student at the University of Waterloo. My passion lies in STEM fields and their many applications to solving complex problems.
+                </p>
+                <p>
+                    Outside of school, my interests include robotics, competitive programming, web design, and mathematics.
+                </p>
+                <!--<p>
+                    <br>
+                </p>
+                <div id="collapsable-1" class="collapsable">
+                    <div class="collapsable-frame">
+                        <div class="collapsable-inner">
+                            <p>~
+                                <a class="link" href="competitive-programming.html">
+                                    Competitive Programming
+                                </a><br>
+                            </p>
+                            <p>~
+                                <a class="link" href="web-design.html">
+                                    Web Design
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="collapsable-btn">
+                        <i class="fa-solid fa-chevron-right"></i>
+                        See More:
+                    </div>
+                    <script>
+                        initCollapsable("#about #collapsable-1");
+                    </script>
+                </div>-->
+            </div>
+
+            <!--projects-->
+            <div id="projects" class="text-block">
+                <h2>Projects</h2>
+                <div class="project-box">
+                    <div class="slideshow" id="slideshow-vrc"
+                    style="float: right; height: 250px; margin: 30px 0px 25px 25px;">
+                        <div class="slideshow-frame">
+                            <div class="slideshow-inner">
+                                <img src="images/robotics/robot1.png" alt="">
+                                <img src="images/robotics/robot2.png" alt="">
+                                <img src="images/robotics/dark.png" alt="">
+                                <img src="images/robotics/ratchet.png" alt="">
+                            </div>
+                        </div>
+                        <div class="page-btn" id="lbtn">
+                            <i class="fa-solid fa-arrow-left"></i>
+                        </div>
+                        <div class="page-btn" id="rbtn">
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </div>
+                        <div class="page-counter">
+                            1/1
+                        </div>
+                        <script>
+                            initSlideshow("#projects #slideshow-vrc");
+                        </script>
+                    </div>
+                    <h3>
+                        VEX Robotics
+                        <a class="project-link" target="_blank"
+                        href="https://www.uhsrobotics.org/">
+                            Learn more:
+                            <i class="fa-solid fa-link"></i>
+                        </a>
+                    </h3>
+                    <p>
+                        Joining my high school's VEX team was an important part of my journey through the engineering field. Through teamwork and competition, we formed lifelong bonds and learned valuable lessons.
+                    </p>
+                    <p>
+                        During the 2023-2024 season, our team, 3652B, worked together on a robot we named "Sniffy". For the first time, I was involved in the CAD and mechanical aspects alongside the programming, where I discorvered my interest in mechanical design and engineering fields outside of software.
+                    </p>
+                </div>
+                <div class="project-box">
+                    <div class="slideshow" id="slideshow-proglib"
+                    style="float: left; height: 200px; margin: 30px 25px 25px 0px;">
+                        <div class="slideshow-frame">
+                            <div class="slideshow-inner">
+                                <img src="images/robotics/prog-lib.png" alt="">
+                                <img src="images/robotics/prog-lib2.png" alt="">
+                            </div>
+                        </div>
+                        <div class="page-btn" id="lbtn">
+                            <i class="fa-solid fa-arrow-left"></i>
+                        </div>
+                        <div class="page-btn" id="rbtn">
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </div>
+                        <div class="page-counter">
+                            1/1
+                        </div>
+                        <script>
+                            initSlideshow("#projects #slideshow-proglib");
+                        </script>
+                    </div>
+                    <h3>
+                        UHS Robotics Programming Library
+                        <a class="project-link" target="_blank"
+                        href="https://github.com/davisliu2006/UHS_VRC_Template">
+                            Learn more:
+                            <i class="fa-solid fa-link"></i>
+                        </a>
+                    </h3>
+                    <p>
+                        During my two years at UHS Robotics, we worked on a programming library for our team's code built with the <a class="link" target="_blank" href="https://pros.cs.purdue.edu/">Perdue PROS API</a>. Our library featured accurate sensing and autonomous driving using self-correcting feedback loops, a simple GUI menu to select between different settings, debugging displays, and various operator-controlled functionality.
+                    </p>
+                    <p>
+                        <span class="minor">Built with: C++, PROS</span>
+                    </p>
+                </div>
+                <div class="project-box">
+                    <div class="slideshow" id="slideshow-guidebot"
+                    style="float: right; height: 200px; margin: 30px 0px 25px 25px;">
+                        <div class="slideshow-frame">
+                            <div class="slideshow-inner">
+                                <img src="images/hackathon/guidebot.png" alt="">
+                                <img src="images/hackathon/guidebot2.png" alt="">
+                            </div>
+                        </div>
+                        <div class="page-btn" id="lbtn">
+                            <i class="fa-solid fa-arrow-left"></i>
+                        </div>
+                        <div class="page-btn" id="rbtn">
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </div>
+                        <div class="page-counter">
+                            1/1
+                        </div>
+                        <script>
+                            initSlideshow("#projects #slideshow-guidebot");
+                        </script>
+                    </div>
+                    <h3>
+                        GuideBot
+                        <a class="project-link" target="_blank"
+                        href="https://devpost.com/software/guidebot">
+                            Devpost:
+                            <i class="fa-solid fa-link"></i>
+                        </a>
+                        <a class="project-link" target="_blank"
+                        href="https://github.com/davisliu2006/HackThe6ix_2023">
+                            GitHub:
+                            <i class="fa-solid fa-link"></i>
+                        </a>
+                    </h3>
+                    <p>
+                        This is a project that I pitched with a team at <a class="link" target="_blank" href="https://hackthe6ix2023.devpost.com/">Hack the 6ix</a> which aims to create a prototype navagation system for visually impaired individuals using robotics and artificial intelligence.
+                    </p>
+                    <p>
+                        Although our Arduino-based hardware model was insufficiently powerful, our project featured a web-based simulation of the robot's theoretical operation along with an AI object recognition program to enhance its capabilities.
+                    </p>
+                    <p>
+                        <span class="minor">Built with: Arduino, C++, JavaScript, Tensorflow, HTML</span>
+                    </p>
+                </div>
+                <!--see more-->
+                <div id="collapsable-1" class="collapsable">
+                    <div class="collapsable-frame">
+                        <div class="collapsable-inner">
+                            <div class="project-box">
+                                <div class="slideshow" id="slideshow-iwitness"
+                                style="float: right; height: 180px; margin: 30px 0px 25px 25px;">
+                                    <div class="slideshow-frame">
+                                        <div class="slideshow-inner">
+                                            <img src="images/hackathon/iwitness.jpg" alt="">
+                                        </div>
+                                    </div>
+                                    <div class="page-btn" id="lbtn">
+                                        <i class="fa-solid fa-arrow-left"></i>
+                                    </div>
+                                    <div class="page-btn" id="rbtn">
+                                        <i class="fa-solid fa-arrow-right"></i>
+                                    </div>
+                                    <div class="page-counter">
+                                        1/1
+                                    </div>
+                                    <script>
+                                        initSlideshow("#projects #slideshow-iwitness");
+                                    </script>
+                                </div>
+                                <h3>
+                                    IWitness
+                                    <a class="project-link" target="_blank"
+                                    href="https://devpost.com/software/temp-rft3ge">
+                                        Devpost:
+                                        <i class="fa-solid fa-link"></i>
+                                    </a>
+                                    <a class="project-link" target="_blank"
+                                    href="https://github.com/RickeyZh/YRHacks2023">
+                                        GitHub:
+                                        <i class="fa-solid fa-link"></i>
+                                    </a>
+                                </h3>
+                                <p>
+                                    This was the first hackathon project that I worked on at <a class="link" target="_blank" href="https://yrhacks-2023.devpost.com/">YRHacks</a>, which aims to create a surveillance system to aid first responders such as law enforcement and emergency personnel in identifying unexpected situations for a prompt arrival at scene. This project was my first significant exposure to back-end web development as well as neural network libraries such as Tensorflow.
+                                </p>
+                                <p>
+                                    <span class="minor">Built with: JavaScript, Tensorflow, HTML</span>
+                                </p>
+                            </div>
+                            <div class="project-box">
+                                <div class="image-holder"
+                                style="float: left; height: 120px; margin: 30px 25px 25px 0px;">
+                                    <img src="images/cp/uacc.png" alt="">
+                                </div>
+                                <h3>
+                                    DMOJ UACC Contest
+                                    <a class="project-link" target="_blank"
+                                    href="https://dmoj.ca/contest/uacc1">
+                                        Contest page:
+                                        <i class="fa-solid fa-link"></i>
+                                    </a>
+                                </h3>
+                                <p>
+                                    I worked with other members of the computer science club at our high school to author a beginner-friendly programming contest that was hosted on the <a class="link" href="https://dmoj.ca">DMOJ online judge</a>. The goal of the contest was to introduce younger students to competitive programming while encouraging more experienced students to explore the process of problem-creation.
+                                </p>
+                            </div>
+                            <div class="project-box">
+                                <h3>
+                                    Web Design
+                                    <a class="project-link" target="_blank"
+                                    href="web-design.html">
+                                        Learn more:
+                                        <i class="fa-solid fa-link"></i>
+                                    </a>
+                                </h3>
+                            </div>
+                            <div class="project-box">
+                                <h3>
+                                    Competitive Programming
+                                    <a class="project-link" target="_blank"
+                                    href="competitive-programming.html">
+                                        Learn more:
+                                        <i class="fa-solid fa-link"></i>
+                                    </a>
+                                </h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="collapsable-btn">
+                        <i class="fa-solid fa-chevron-right"></i>
+                        See More:
+                    </div>
+                    <script>
+                        initCollapsable("#projects #collapsable-1");
+                    </script>
+                </div>
+            </div>
+
+            <!--portfolio-->
+            <div id="portfolio" class="text-block">
+                <h2>Portfolio</h2>
+                <p>
+                    <a class="link" href="portfolio.html">
+                        View my portfolio >>
+                    </a>
+                </p>
+            </div>
+
+            <!--footer-->
+            <div id="footer">
+                <script src="src/load_footer.js"></script>
+            </div>
+        </div>
+
+        <!--scripts-->
+        <script src="src/index.js"></script>
+    </body>
+</html>
