@@ -1,0 +1,23 @@
+/*project box*/
+.project-box {
+    border: solid 1px rgb(200, 200, 200);
+    border-radius: 10px;
+    padding: 0px 25px 0px 25px;
+    margin: 15px 0px 15px 0px;
+}
+.project-link {
+    font-size: 18px;
+    color: rgb(200, 200, 200, 0.5);
+    transition: color 0.5s;
+}
+.project-link:hover {
+    color: rgb(150, 200, 250, 0.5);
+    transition: color 0.5s;
+}
+.project-box img {
+    transition: transform 1s;
+}
+.project-box img:hover {
+    transform: scale(1.03, 1.03);
+    transition: transform 1s;
+}

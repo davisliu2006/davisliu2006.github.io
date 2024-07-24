@@ -1,0 +1,11 @@
+# folders
+bin/
+*/bin/
+node_modules/
+reference/
+
+# files
+.DS_Store
+package-lock.json
+
+#extensions
