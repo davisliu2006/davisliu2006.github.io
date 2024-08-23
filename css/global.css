@@ -76,6 +76,11 @@ span.unbold {
     font-weight: normal;
 }
 
+/*invisible*/
+._info {
+    display: none;
+}
+
 /*GLOBAL*/
 
 /*top bar*/
@@ -107,7 +112,11 @@ span.unbold {
 .top-bar-btn:hover, .login-btn:hover {
     /*animation*/
     background-size: 100% 1px;
-    transition: background-size 0.3s;
+    transition: background-size 0.3s, color 0.5s;;
+}
+.top-bar-btn.active, .login-btn.active {
+    color: rgb(200, 200, 200, 0.7);
+    transition: background-size 0.3s, color 0.5s;
 }
 .top-bar-btn-group {
     float: left;
@@ -142,6 +151,10 @@ span.unbold {
     top: 100%; left: 0%;
     width: 100%; height: 0px;
     background-color: inherit;
+}
+.footer-block {
+    margin-right: 50px;
+    display: inline-block;
 }
 
 /*MAIN*/
