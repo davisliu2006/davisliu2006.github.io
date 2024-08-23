@@ -32,17 +32,25 @@ function indexMain() {
             document.querySelector("#top-bar-projects"),
             document.querySelector("#top-bar-portfolio")
         ];
+        let path = document.querySelector("#top-bar-path");
+        let pathDesc = [
+            "~/home",
+            "~/home/about",
+            "~/home/projects",
+            "~/home/portfolio"
+        ];
         let flag = false;
         for (let i = sections.length-1; i >= 0; i--) {
             let divScr = sections[i].getBoundingClientRect().top;
             if (divScr <= window.innerHeight*0.5) {
-                if (flag) {navBtns[i].style.color = "";}
+                if (flag) {navBtns[i].classList.remove("active");}
                 else {
                     flag = true;
-                    navBtns[i].style.color = "rgb(200, 200, 200, 0.7)";
+                    navBtns[i].classList.add("active");
+                    path.innerHTML = pathDesc[i];
                 }
             } else {
-                navBtns[i].style.color = "";
+                navBtns[i].classList.remove("active");
             }
         }
     }
@@ -50,9 +58,5 @@ function indexMain() {
     window.addEventListener("load", function() {
         setTimeout(navUpdate, 100);
     });
-
-    function coverAnim() {
-        
-    }
 }
 indexMain();
