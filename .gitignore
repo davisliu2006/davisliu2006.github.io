@@ -3,6 +3,7 @@ bin/
 */bin/
 node_modules/
 reference/
+test/
 
 # files
 .DS_Store
