@@ -76,6 +76,26 @@ span.unbold {
     font-weight: normal;
 }
 
+/*aspect ratios*/
+.ratio-square {
+    aspect-ratio: 1;
+}
+.ratio-4-3 {
+    aspect-ratio: 4/3;
+}
+.ratio-16-10 {
+    aspect-ratio: 16/10;
+}
+.ratio-16-9 {
+    aspect-ratio: 16/9;
+}
+.ratio-letter {
+    aspect-ratio: 8.5/11;
+}
+.ratio-a4 {
+    aspect-ratio: 297/210;
+}
+
 /*invisible*/
 ._info {
     display: none;
