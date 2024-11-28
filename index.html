@@ -17,6 +17,11 @@
                 background-image: linear-gradient(to bottom, rgb(30, 30, 30), rgb(30, 30, 30), rgb(30, 30, 30));
                 background-size: 100%; background-position: center; background-attachment: scroll;
             }
+            #front-image-canvas {
+                position: absolute;
+                top: 0px; left: 0px;
+                width: 100%; height: 100%;
+            }
             #title-holder {
                 position: absolute;
                 top: 40vh; left: 35%; transform: translate(-50%, -50%);
@@ -26,6 +31,32 @@
             #title {
                 font-weight: normal;
                 white-space: pre;
+            }
+            @keyframes title-line-anim {
+                0% {width: 0%; height: 2px;}
+                100% {width: 60%; height: 1px;}
+            }
+            #title-line {
+                display: none;
+                position: relative;
+                left: 50%; transform: translate(-50%, 0);
+                height: 1px; width: 60%;
+                background-color: rgb(100, 100, 100);
+                animation-name: title-line-anim;
+                animation-duration: 1s;
+            }
+            #front-down-btn {
+                position: absolute;
+                left: 50%; bottom: 10%; transform: translate(-50%, -50%);
+                font-size: 20px;
+                padding: 7px 14px 7px 14px;
+                background-color: rgb(100, 100, 100); opacity: 15%;
+                transition: opacity 1s;
+                border-radius: 10px;
+            }
+            #front-down-btn:hover {
+                opacity: 30%;
+                transition: opacity 1s;
             }
             
             /*about*/
@@ -43,8 +74,10 @@
         </style>
 
         <!--header scripts-->
+        <script src="src/global.js"></script>
         <script src="src/slideshows.js"></script>
         <script src="src/collapsables.js"></script>
+        <script src="src/animations.js"></script>
     </head>
 
     <body>
@@ -57,12 +90,15 @@
         <div id="main">
             <!--title-->
             <div id="front-image">
-                
+                <canvas id="front-image-canvas">
+
+                </canvas>
                 <div id="title-holder">
 <h1 id="title">{
 &emsp;&emsp;Hi, I am
 &emsp;&emsp;&emsp;&emsp;Davis Liu
 }</h1>
+                    <div id="title-line"></div>
                     <h3>
                         <a target="_blank" href="https://github.com/davisliu2006">
                             <i id="github-icon" class="fa-brands fa-github"></i>
@@ -75,6 +111,9 @@
                         </a>
                     </h3>
                 </div>
+                <a id="front-down-btn" href="index.html#about">
+                    <i class="fa-solid fa-chevron-down"></i>
+                </a>
             </div>
 
             <!--about-->
@@ -84,7 +123,7 @@
                 </div>
                 <h2>About Me</h2>
                 <p>
-                    Hi, my name is Davis and I am an incoming Software Engineering student at the University of Waterloo. My passion lies in STEM fields and their many applications to solving complex problems.
+                    Hello! My name is Davis and I am a first-year Software Engineering student at the University of Waterloo. My passion lies in STEM fields and their many applications to solving complex problems.
                 </p>
                 <p>
                     Outside of school, my interests include robotics, competitive programming, web design, and mathematics.
@@ -238,7 +277,7 @@
                         Although our Arduino-based hardware model was insufficiently powerful, our project featured a web-based simulation of the robot's theoretical operation along with an AI object recognition program to enhance its capabilities.
                     </p>
                     <p>
-                        <span class="minor">Built with: Arduino, C++, JavaScript, Tensorflow, HTML</span>
+                        <span class="minor">Built with: Arduino, C++, JavaScript, TensorFlow, HTML</span>
                     </p>
                 </div>
                 <!--see more-->
@@ -280,10 +319,10 @@
                                     </a>
                                 </h3>
                                 <p>
-                                    This was the first hackathon project that I worked on at <a class="link" target="_blank" href="https://yrhacks-2023.devpost.com/">YRHacks</a>, which aims to create a surveillance system to aid first responders such as law enforcement and emergency personnel in identifying unexpected situations for a prompt arrival at scene. This project was my first significant exposure to back-end web development as well as neural network libraries such as Tensorflow.
+                                    This was the first hackathon project that I worked on at <a class="link" target="_blank" href="https://yrhacks-2023.devpost.com/">YRHacks</a>, which aims to create a surveillance system to aid first responders such as law enforcement and emergency personnel in identifying unexpected situations for a prompt arrival at scene. This project was my first significant exposure to back-end web development as well as neural network libraries such as TensorFlow.
                                 </p>
                                 <p>
-                                    <span class="minor">Built with: JavaScript, Tensorflow, HTML</span>
+                                    <span class="minor">Built with: JavaScript, TensorFlow, HTML</span>
                                 </p>
                             </div>
                             <div class="project-box">
@@ -339,7 +378,7 @@
             <div id="portfolio" class="text-block">
                 <h2>Portfolio</h2>
                 <p>
-                    <a class="link" href="portfolio.html">
+                    <a class="link" target="_blank" href="test/resume.pdf">
                         View my portfolio >>
                     </a>
                 </p>

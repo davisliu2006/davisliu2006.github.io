@@ -28,6 +28,19 @@ function deg(x) {
 function sq(x) {
     return x*x;
 }
+function sgn(x) {
+    if (x > 0) {return 1;}
+    else if (x < 0) {return -1;}
+    else {return 0;}
+}
+
+// random
+function randInt(lo, hi) {
+    return Math.floor(Math.random()*(hi-lo+1)+lo);
+}
+function randDbl(lo, hi) {
+    return Math.random()*(hi-lo)+lo;
+}
 
 // data
 function Arr(n, v = 0) {
