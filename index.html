@@ -45,6 +45,10 @@
                 animation-name: title-line-anim;
                 animation-duration: 1s;
             }
+            @keyframes front-down-btn-anim {
+                0% {opacity: 15%;}
+                100% {opacity: 0%;}
+            }
             #front-down-btn {
                 position: absolute;
                 left: 50%; bottom: 10%; transform: translate(-50%, -50%);
@@ -159,7 +163,7 @@
             <!--projects-->
             <div id="projects" class="text-block">
                 <h2>Projects</h2>
-                <div class="project-box">
+                <div class="project-box" id="project-box-vrc">
                     <div class="slideshow" id="slideshow-vrc"
                     style="float: right; height: 250px; margin: 30px 0px 25px 25px;">
                         <div class="slideshow-frame">
@@ -197,8 +201,11 @@
                     <p>
                         During the 2023-2024 season, our team, 3652B, worked together on a robot we named "Sniffy". For the first time, I was involved in the CAD and mechanical aspects alongside the programming, where I discorvered my interest in mechanical design and engineering fields outside of software.
                     </p>
+                    <script>
+                        initAnimInView("#project-box-vrc", "fade-in", 1, 2);
+                    </script>
                 </div>
-                <div class="project-box">
+                <div class="project-box" id="project-box-proglib">
                     <div class="slideshow" id="slideshow-proglib"
                     style="float: left; height: 200px; margin: 30px 25px 25px 0px;">
                         <div class="slideshow-frame">
@@ -234,8 +241,11 @@
                     <p>
                         <span class="minor">Built with: C++, PROS</span>
                     </p>
+                    <script>
+                        initAnimInView("#project-box-proglib", "fade-in", 1, 2);
+                    </script>
                 </div>
-                <div class="project-box">
+                <div class="project-box" id="project-box-guidebot">
                     <div class="slideshow" id="slideshow-guidebot"
                     style="float: right; height: 200px; margin: 30px 0px 25px 25px;">
                         <div class="slideshow-frame">
@@ -279,6 +289,9 @@
                     <p>
                         <span class="minor">Built with: Arduino, C++, JavaScript, TensorFlow, HTML</span>
                     </p>
+                    <script>
+                        initAnimInView("#project-box-guidebot", "fade-in", 1, 2);
+                    </script>
                 </div>
                 <!--see more-->
                 <div id="collapsable-1" class="collapsable">
@@ -370,6 +383,7 @@
                     </div>
                     <script>
                         initCollapsable("#projects #collapsable-1");
+                        initAnimInView("#projects #collapsable-1", "fade-in", 1, 2);
                     </script>
                 </div>
             </div>

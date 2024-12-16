@@ -9,9 +9,126 @@
         <link rel="stylesheet" href="css/animations.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
         <style>
+            /*cp animation*/
             #cp-animation {
-                width: 84vw; height: 21vw;
-                border: solid 1px white;
+                position: relative;
+                width: 84vw; height: 32vw;
+                border: solid 0px white;
+            }
+            @keyframes rect-scale {
+                0% {transform: translate(-50%, -50%) scale(0%, 0%);}
+                100% {transform: translate(-50%, -50%) scale(100%, 100%);}
+            }
+            #cp-animation .rect {
+                position: absolute;
+                width: 10%; height: 15%;
+                background-color: rgb(150, 150, 150);
+                transform: translate(-50%, -50%);
+                border-radius: 10px;
+                animation-name: rect-scale; animation-duration: 1s;
+                animation-fill-mode: both;
+            }
+            #cp-animation .vr {
+                position: absolute;
+                background-color: rgb(200, 200, 200);
+                width: 2px;
+                animation-name: scale-v; animation-duration: 1s;
+                animation-fill-mode: both;
+            }
+            #cp-animation .hr {
+                position: absolute;
+                background-color: rgb(200, 200, 200);
+                height: 2px;
+                animation-name: scale-h; animation-duration: 1s;
+                animation-fill-mode: both;
+            }
+            #rect11 {
+                top: 80%; left: 20%; background-color: rgb(120, 130, 150) !important;
+                animation-delay: 0s;
+            }
+            #vr11 {
+                top: 65%; left: 20%; height: 15%;
+                transform-origin: 50% 100%; animation-delay: 0s;
+            }
+            #hr11 {
+                top: 65%; left: 20%; width: 10%;
+                transform-origin: 0% 50%; animation-delay: 0.5s;
+            }
+            #rect12 {
+                top: 80%; left: 40%; background-color: rgb(135, 140, 160) !important;
+                animation-delay: 0.1s;
+            }
+            #vr12 {
+                top: 65%; left: 40%; height: 15%;
+                transform-origin: 50% 100%; animation-delay: 0.1s;
+            }
+            #hr12 {
+                top: 65%; left: 30%; width: 10%;
+                transform-origin: 100% 50%; animation-delay: 0.6s;
+            }
+            #rect13 {
+                top: 80%; left: 60%; background-color: rgb(150, 150, 170) !important;
+                animation-delay: 0.2s;
+            }
+            #vr13 {
+                top: 65%; left: 60%; height: 15%;
+                transform-origin: 50% 100%; animation-delay: 0.2s;
+            }
+            #hr13 {
+                top: 65%; left: 60%; width: 10%;
+                transform-origin: 0% 50%; animation-delay: 0.7s;
+            }
+            #rect14 {
+                top: 80%; left: 80%; background-color: rgb(165, 160, 180) !important;
+                animation-delay: 0.3s;
+            }
+            #vr14 {
+                top: 65%; left: 80%; height: 15%;
+                transform-origin: 50% 100%; animation-delay: 0.3s;
+            }
+            #hr14 {
+                top: 65%; left: 70%; width: 10%;
+                transform-origin: 100% 50%; animation-delay: 0.8s;
+            }
+            #rect21 {
+                top: 50%; left: 30%; background-color: rgb(135, 140, 160) !important;
+                animation-delay: 0.6s;
+            }
+            #vr15 {
+                top: 50%; left: 30%; height: 15%;
+                transform-origin: 50% 100%; animation-delay: 0.6s;
+            }
+            #vr21 {
+                top: 35%; left: 30%; height: 15%;
+                transform-origin: 50% 100%; animation-delay: 0.6s;
+            }
+            #hr21 {
+                top: 35%; left: 30%; width: 20%;
+                transform-origin: 0% 50%; animation-delay: 1.1s;
+            }
+            #rect22 {
+                top: 50%; left: 70%; background-color: rgb(165, 160, 180) !important;
+                animation-delay: 0.8s;
+            }
+            #vr16 {
+                top: 50%; left: 70%; height: 15%;
+                transform-origin: 50% 100%; animation-delay: 0.8s;
+            }
+            #vr22 {
+                top: 35%; left: 70%; height: 15%;
+                transform-origin: 50% 100%; animation-delay: 0.8s;
+            }
+            #hr22 {
+                top: 35%; left: 50%; width: 20%;
+                transform-origin: 100% 50%; animation-delay: 1.3s;
+            }
+            #rect31 {
+                top: 20%; left: 50%; background-color: rgb(165, 160, 180) !important;
+                animation-delay: 1.3s;
+            }
+            #vr23 {
+                top: 20%; left: 50%; height: 15%;
+                transform-origin: 50% 100%; animation-delay: 1.3s;
             }
         </style>
 
@@ -37,6 +154,14 @@
             <div id="about" class="text-block">
                 <h1>Competitive Programming</h1>
                 <div id="cp-animation">
+                    <div id="vr11" class="vr"></div><div id="vr12" class="vr"></div>
+                    <div id="vr13" class="vr"></div><div id="vr14" class="vr"></div>
+                    <div id="vr15" class="vr"></div><div id="vr16" class="vr"></div>
+                    <div id="vr21" class="vr"></div><div id="vr22" class="vr"></div>
+                    <div id="vr23" class="vr"></div>
+                    <div id="hr11" class="hr"></div><div id="hr12" class="hr"></div>
+                    <div id="hr13" class="hr"></div><div id="hr14" class="hr"></div>
+                    <div id="hr21" class="hr"></div><div id="hr22" class="hr"></div>
                     <div id="rect11" class="rect"></div>
                     <div id="rect12" class="rect"></div>
                     <div id="rect13" class="rect"></div>

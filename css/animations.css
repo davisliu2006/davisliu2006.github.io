@@ -1,3 +1,4 @@
+/*fade*/
 @keyframes fade-in {
     0% {opacity: 0%;}
     100% {opacity: 100%;}
@@ -7,6 +8,7 @@
     100% {opacity: 0%;}
 }
 
+/*extend, retract*/
 @keyframes extend-h {
     0% {width: 0%;}
     100% {width: 100%;}
@@ -14,4 +16,26 @@
 @keyframes retract-h {
     0% {width: 100%;}
     100% {width: 0%;}
+}
+@keyframes extend-v {
+    0% {height: 0%;}
+    100% {height: 100%;}
+}
+@keyframes retract-v {
+    0% {height: 100%;}
+    100% {height: 0%;}
+}
+
+/*scale*/
+@keyframes scale-h {
+    0% {transform: scale(0%, 100%);}
+    100% {transform: scale(100%, 100%);}
+}
+@keyframes scale-v {
+    0% {transform: scale(100%, 0%);}
+    100% {transform: scale(100%, 100%);}
+}
+@keyframes scale {
+    0% {transform: scale(0%, 0%);}
+    100% {transform: scale(100%, 100%);}
 }
