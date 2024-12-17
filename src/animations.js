@@ -6,11 +6,19 @@ function initViewPosAnim(selector, anim, start, end) {
     elem.style["animation-iteration-count"] = "1";
     elem.style["animation-fill-mode"] = "both";
 
-    window.addEventListener("scroll", function() {
+    function update() {
         let boundingRect = elem.getBoundingClientRect();
         let pos = boundingRect.top/window.innerHeight;
-        elem.style["animation-delay"] = (pos-start)/(start-end)+"s";
-    });
+        if (pos > start) {
+            elem.style["animation-delay"] = "0s";
+        } else if (pos < end) {
+            elem.style["animation-delay"] = "-1s";
+        } else {
+            elem.style["animation-delay"] = (pos-start)/(start-end)+"s";
+        }
+    }
+    window.addEventListener("scroll", update);
+    update();
 }
 
 function initAnimInView(selector, anim, start, duration, anchor=0, delay=0, revert=false) {
@@ -22,7 +30,7 @@ function initAnimInView(selector, anim, start, duration, anchor=0, delay=0, reve
     elem.style["animation-iteration-count"] = "1";
     elem.style["animation-fill-mode"] = "both";
 
-    window.addEventListener("scroll", function() {
+    function update() {
         let boundingRect = elem.getBoundingClientRect();
         let pos = (boundingRect.top*(1-anchor)+boundingRect.bottom*anchor)/window.innerHeight;
         if (pos <= start) {
@@ -33,5 +41,7 @@ function initAnimInView(selector, anim, start, duration, anchor=0, delay=0, reve
             elem.style["animation-play-state"] = "paused";
             elem.style["animation-delay"] = delay+"s";
         }
-    });
+    }
+    window.addEventListener("scroll", update);
+    update();
 }

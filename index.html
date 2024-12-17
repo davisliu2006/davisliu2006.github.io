@@ -37,7 +37,6 @@
                 100% {width: 60%; height: 1px;}
             }
             #title-line {
-                display: none;
                 position: relative;
                 left: 50%; transform: translate(-50%, 0);
                 height: 1px; width: 60%;
@@ -103,20 +102,31 @@
 &emsp;&emsp;&emsp;&emsp;Davis Liu
 }</h1>
                     <div id="title-line"></div>
-                    <h3>
-                        <a target="_blank" href="https://github.com/davisliu2006">
+                    <h3 id="title-links">
+                        <a id="link-1"
+                        target="_blank" href="https://github.com/davisliu2006">
                             <i id="github-icon" class="fa-brands fa-github"></i>
                         </a>
-                        <a target="_blank" href="https://www.linkedin.com/in/davis-liu-5178b6252/">
+                        <a id="link-2"
+                        target="_blank" href="https://www.linkedin.com/in/davis-liu-5178b6252/">
                             <i id="linkedin-icon" class="fa-brands fa-linkedin"></i>
                         </a>
-                        <a target="_blank" href="about:blank">
+                        <a id="link-3"
+                        target="_blank" href="about:blank">
                             <i id="instagram-icon" class="fa-brands fa-instagram"></i>
                         </a>
+                        <script>
+                            initAnimInView("#title-links #link-1", "fade-in", 1, 1, 0, 0.2);
+                            initAnimInView("#title-links #link-2", "fade-in", 1, 1, 0, 0.4);
+                            initAnimInView("#title-links #link-3", "fade-in", 1, 1, 0, 0.6);
+                        </script>
                     </h3>
                 </div>
                 <a id="front-down-btn" href="index.html#about">
                     <i class="fa-solid fa-chevron-down"></i>
+                    <script>
+                        initViewPosAnim("#front-down-btn", "front-down-btn-anim", 0.9, 0.4);
+                    </script>
                 </a>
             </div>
 
