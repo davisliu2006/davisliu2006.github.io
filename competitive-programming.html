@@ -134,6 +134,7 @@
 
         <!--header scripts-->
         <script src="src/slideshows.js"></script>
+        <script src="src/animations.js"></script>
     </head>
 
     <body>
@@ -172,29 +173,74 @@
                 </div>
             </div>
 
+            <!--links-->
+            <div id="links" class="text-block">
+                <h2>Links</h2>
+                <div id="profiles">
+                    <h3>Profiles</h3>
+                    <p>&emsp;
+                        <a class="link" target="_blank"
+                        href="https://dmoj.ca/user/DavisLiu">
+                            DavisLiu — DMOJ
+                        </a>
+                    </p>
+                    <p>&emsp;
+                        <a class="link" target="_blank"
+                        href="https://leetcode.com/u/davisliu2006/">
+                            davisliu2006 — LeetCode
+                        </a>
+                    </p>
+                    <script>
+                        initAnimInView("#links #profiles", "fade-in", 1, 2);
+                    </script>
+                </div>
+                <div id="problem-setting">
+                    <h3>Problem Setting</h3>
+                    <p>&emsp;
+                        <a class="link" target="_blank"
+                        href="https://dmoj.ca/contest/uacc1">
+                            UACC Contest 1 — DMOJ
+                        </a>
+                    </p>
+                    <script>
+                        initAnimInView("#links #problem-setting", "fade-in", 1, 2);
+                    </script>
+                </div>
+            </div>
+
             <!--resources-->
             <div id="resources" class="text-block">
                 <h2>Resources</h2>
-                <h3>C++</h3>
-                <p>&emsp;
-                    <a class="link" target="_blank"
-                    href="https://github.com/davisliu2006/Competitive_Programming/blob/main/gnu_stdc%2B%2B.h">
-                        bits/stdc++.h
-                    </a>
-                </p>
-                <p>&emsp;
-                    <a class="link" target="_blank"
-                    href="https://github.com/davisliu2006/Competitive_Programming/blob/main/validator.cpp">
-                        Input Validator
-                    </a>
-                </p>
-                <h3>Java</h3>
-                <p>&emsp;
-                    <a class="link" target="_blank"
-                    href="https://github.com/davisliu2006/Competitive_Programming/blob/main/BufferedReaderTemplate.java">
-                        BufferedReader Template
-                    </a>
-                </p>
+                <div id="resources-cpp">
+                    <h3>C++</h3>
+                    <p>&emsp;
+                        <a class="link" target="_blank"
+                        href="https://github.com/davisliu2006/Competitive_Programming/blob/main/gnu_stdc%2B%2B.h">
+                            bits/stdc++.h
+                        </a>
+                    </p>
+                    <p>&emsp;
+                        <a class="link" target="_blank"
+                        href="https://github.com/davisliu2006/Competitive_Programming/blob/main/validator.cpp">
+                            Input Validator
+                        </a>
+                    </p>
+                    <script>
+                        initAnimInView("#resources-cpp", "fade-in", 1, 2);
+                    </script>
+                </div>
+                <div id="resources-java">
+                    <h3>Java</h3>
+                    <p>&emsp;
+                        <a class="link" target="_blank"
+                        href="https://github.com/davisliu2006/Competitive_Programming/blob/main/BufferedReaderTemplate.java">
+                            BufferedReader Template
+                        </a>
+                    </p>
+                    <script>
+                        initAnimInView("#resources-java", "fade-in", 1, 2);
+                    </script>
+                </div>
             </div>
 
             <!--footer-->
