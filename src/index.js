@@ -116,8 +116,6 @@ function indexMain() {
                     nAttatch[ui]++; nAttatch[vi]++;
                     break;
                 }
-                let dist = Math.sqrt(sq(u.x-graph[vi].x)+sq(u.y-graph[vi].y));
-                prob.push(1/dist+prob[prob.length-1]);
             }
             // edges[i] = new Edge(randInt(0, N_NODE-1), randInt(0, N_NODE-2));
             // edges[i].v += (edges[i].v == edges[i].u);
