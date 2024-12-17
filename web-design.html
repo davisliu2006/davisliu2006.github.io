@@ -14,6 +14,7 @@
 
         <!--header scripts-->
         <script src="src/slideshows.js"></script>
+        <script src="src/animations.js"></script>
     </head>
 
     <body>
@@ -33,7 +34,7 @@
             <!--about-->
             <div id="about" class="text-block">
                 <h2>Web Design</h2>
-                <div class="project-box">
+                <div id="portfolio-website" class="project-box">
                     <h4>
                         Portfolio Website:
                         <a class="project-link"
@@ -42,8 +43,11 @@
                             <i class="fa-solid fa-link"></i>
                         </a>
                     </h4>
+                    <script>
+                        initAnimInView("#portfolio-website", "fade-in", 1, 2, 0, 0);
+                    </script>
                 </div>
-                <div class="project-box">
+                <div id="biology-website" class="project-box">
                     <h4>
                         Grade 12 Biology Project:
                         <a class="project-link" target="_blank"
@@ -52,6 +56,9 @@
                             <i class="fa-solid fa-link"></i>
                         </a>
                     </h4>
+                    <script>
+                        initAnimInView("#biology-website", "fade-in", 1, 2, 0, 0.2);
+                    </script>
                 </div>
             </div>
 
