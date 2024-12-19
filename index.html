@@ -435,6 +435,28 @@
             </div>
         </div>
 
+        <!--loading screen-->
+        <div id="loading-screen" class="active">
+            <div id="loading-message-holder">
+                <h3>
+                    Loading website contents...
+                </h3>
+                <br>
+                <img id="loading-circle" src="images/loading.svg" alt="">
+            </div>
+            <script>
+                {
+                    let mainDiv = document.getElementById("main");
+                    let loading = document.getElementById("loading-screen");
+                    mainDiv.style.visibility = "hidden";
+                    window.addEventListener("load", function(event) {
+                        loading.classList.remove("active");
+                        mainDiv.style.visibility = "visible";
+                    });
+                }
+            </script>
+        </div>
+
         <!--scripts-->
         <script src="src/index.js"></script>
     </body>
