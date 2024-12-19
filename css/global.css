@@ -177,6 +177,25 @@ span.unbold {
     display: inline-block;
 }
 
+/*loading screen*/
+#loading-screen {
+    position: fixed;
+    top: 0px; left: 0px;
+    width: 100%; height: 100%;
+    background-color: rgb(50, 50, 50);
+    z-index: 101;
+    visibility: hidden;
+}
+#loading-screen.active {
+    visibility: visible;
+}
+#loading-screen #loading-message-holder {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
 /*MAIN*/
 
 #main {
