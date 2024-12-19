@@ -8,6 +8,7 @@ function initSlideshow(selector) {
     let imgs = slide.querySelectorAll("img");
     console.log(inner);
     console.log(imgs.length);
+    frame.style.width = "0px";
 
     let indx = 0;
 
