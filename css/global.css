@@ -171,7 +171,7 @@ span.unbold {
         margin-right: 30px; margin-left: 20px;
     }
 }
-@media screen and (max-width: 950px) {
+@media screen and ((max-width: 950px) or (max-aspect-ratio: 1)) {
     #top-bar-logo {
         padding-left: 70px;
     }
