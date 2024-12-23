@@ -19,5 +19,16 @@ async function loadGlobal() {
     } else {
         path.innerHTML = "~/";
     }
+
+    // mobile navbar
+    let navBar = document.querySelector("#top-bar-nav");
+    let expand = document.querySelector("#top-bar-nav #nav-expand");
+    expand.addEventListener("click", function() {
+        if (navBar.classList.contains("active")) {
+            navBar.classList.remove("active");
+        } else {
+            navBar.classList.add("active");
+        }
+    })
 }
 loadGlobal();
