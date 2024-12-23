@@ -119,11 +119,16 @@ span.unbold {
 #top-bar-nav {
     float: left;
 }
+#top-bar-nav #nav-expand {
+    display: none;
+    margin: 18px 25px 5px 25px;
+    font-size: 20px;
+}
 .top-bar-btn, .login-btn {
     float: left;
     margin: 18px 15px 5px 15px;
     background-color: rgb(50, 50, 50, 0);
-    font-size: 20px; text-align: center; color: rgb(200, 200, 200); text-decoration: none;
+    font-size: 20px; color: rgb(200, 200, 200); text-decoration: none;
     /*animation*/
     background-image: linear-gradient(to right, rgb(200, 200, 200, 1) 0%, rgb(200, 200, 200, 1) 10%, rgb(200, 200, 200, 1) 90%, rgb(200, 200, 200, 1) 100%);
     background-position: 50% 100%; background-size: 0% 2px; background-repeat: no-repeat;
@@ -145,7 +150,7 @@ span.unbold {
     display: none;
     padding: 8px 15px 8px 15px;
     background-color: rgb(50, 50, 50, 1);
-    font-size: 20px; text-align: center; color: rgb(200, 200, 200, 0.5); text-decoration: none;
+    font-size: 20px; color: rgb(200, 200, 200, 0.5); text-decoration: none;
 }
 .top-bar-btn-group:hover .top-bar-sub-btn {
     display: block;
@@ -156,7 +161,47 @@ span.unbold {
 }
 #top-bar-path {
     float: right;
-    margin: 18px 50px 5px 50px;
+    margin: 18px 50px 5px 20px;
+}
+@media screen and (max-width: 1000px) {
+    #top-bar-logo {
+        padding-left: 30px; padding-right: 20px;
+    }
+    #top-bar-path {
+        margin-right: 30px; margin-left: 20px;
+    }
+}
+@media screen and (max-width: 950px) {
+    #top-bar-logo {
+        padding-left: 70px;
+    }
+    #top-bar-nav {
+        position: absolute;
+        top: 0px; left: 5px;
+        transition: background-color 0.3s;
+    }
+    #top-bar-nav.active {
+        background-color: rgb(50, 50, 50, 0.8);
+        transition: background-color 0.3s;
+    }
+    #top-bar-nav #nav-expand {
+        display: block;
+    }
+    .top-bar-btn {
+        float: none; display: none;
+        margin: 18px 25px 18px 25px;
+    }
+    #top-bar-nav.active .top-bar-btn {
+        display: block;
+    }
+    #top-bar-nav #nav-expand {
+        opacity: 100%;
+        transition: opacity 0.3s;
+    }
+    #top-bar-nav.active #nav-expand {
+        opacity: 70%;
+        transition: opacity 0.3s;
+    }
 }
 
 /*footer*/
