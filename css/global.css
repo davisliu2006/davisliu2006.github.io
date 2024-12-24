@@ -290,7 +290,7 @@ span.unbold {
 /*image holder*/
 .image-holder {
     position: relative;
-    width: fit-content;
+    width: fit-content; max-width: 100%;
     border: solid 1px rgb(150, 150, 150);
     border-radius: 10px;
     overflow: hidden;
@@ -306,6 +306,7 @@ span.unbold {
 /*slideshow*/
 .slideshow {
     position: relative;
+    max-width: 100%;
 }
 .slideshow .page-btn {
     position: absolute;
@@ -345,7 +346,7 @@ span.unbold {
     overflow: hidden;
     border: solid 1px rgb(255, 255, 255);
     border-radius: 10px;
-    height: 100%;
+    height: 100%; max-width: 100%;
 }
 .slideshow-inner {
     display: flex;
