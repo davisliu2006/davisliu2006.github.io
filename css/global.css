@@ -392,3 +392,8 @@ span.unbold {
 .collapsable-inner {
     margin: 20px 25px 25px 25px;
 }
+@media screen and (max-width: 950px) {
+    .collapsable-inner {
+        margin-left: 2%; margin-right: 2%;
+    }
+}
