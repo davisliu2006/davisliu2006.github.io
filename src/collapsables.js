@@ -28,6 +28,11 @@ function initCollapsable(selector) {
         active = !active;
         update();
     }
+    window.addEventListener("resize", function() {
+        if (active) {
+            frame.style.height = "fit-content";
+        }
+    });
     window.addEventListener("load", function(event) {
         setup();
     });
