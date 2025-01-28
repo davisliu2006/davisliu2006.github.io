@@ -65,6 +65,7 @@ td {
     border: solid 1px;
     padding: 4px 12px 4px 12px;
 }
+.td-left {text-align: left;}
 .td-center {text-align: center;}
 .td-right {text-align: right;}
 
