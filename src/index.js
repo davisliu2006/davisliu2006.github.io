@@ -1,4 +1,13 @@
 function indexMain() {
+    // redirect / to /index
+    function redirect() {
+        let loc = window.location;
+        if (loc.pathname == "/") {
+            loc.replace(loc.protocol+"//"+loc.hostname+":"+loc.port+"/index.html");
+        }
+    }
+    redirect();
+
     // title animation
     function titleAnim() {
         let title = document.querySelector("#title");
