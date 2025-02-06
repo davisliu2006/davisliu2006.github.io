@@ -51,6 +51,9 @@ a {
     /*background-size: 100% 1px;
     transition: background-size 1s;*/
 }
+hr {
+    opacity: 50%;
+}
 
 /*table*/
 table {
@@ -345,7 +348,7 @@ span.unbold {
 }
 .slideshow-frame {
     overflow: hidden;
-    border: solid 1px rgb(255, 255, 255);
+    border: solid 1px rgb(200, 200, 200);
     border-radius: 10px;
     height: 100%; max-width: 100%;
 }
