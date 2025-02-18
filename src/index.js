@@ -140,8 +140,10 @@ function indexMain() {
             ctx.lineWidth = 1;
             let grad = ctx.createRadialGradient(CX*0.35,CY*0.4,0, CX*0.35,CY*0.4,CY);
             grad.addColorStop(0, "rgb(170, 200, 250, 0)");
-            grad.addColorStop(1, "rgb(170, 200, 250, 0.3)");
-            ctx.strokeStyle = "rgb(170, 200, 250, 0.3)";
+            grad.addColorStop(0.5, "rgb(170, 200, 250, 0.14)");
+            grad.addColorStop(0.75, "rgb(170, 200, 250, 0.26)");
+            grad.addColorStop(1, "rgb(170, 200, 250, 0.4)");
+            // ctx.strokeStyle = "rgb(170, 200, 250, 0.4)";
             ctx.strokeStyle = grad;
             for (let i = 0; i < N_NODE; i++) {
                 let nd = graph[i];
@@ -166,10 +168,6 @@ function indexMain() {
                 if (nd.x < CX*-0 && nd.vx < 0) {nd.vx *= -1;}
                 else if (nd.x >= CX*1 && nd.vx > 0) {nd.vx *= -1;}
             }
-            // grad.addColorStop(0, "rgb(170, 200, 250, 0)");
-            // grad.addColorStop(1, "rgb(170, 200, 250, 0.3)");
-            // ctx.strokeStyle = "rgb(170, 200, 250, 0.3)";
-            // ctx.strokeStyle = grad;
             for (let i = 0; i < N_EDGE; i++) {
                 let edge = edges[i];
                 let u = graph[edge.u];
