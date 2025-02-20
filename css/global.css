@@ -27,6 +27,9 @@ p {
     font-size: 18px; line-height: 1.5;
     color: rgb(200, 200, 200);
 }
+label {
+    font-size: 18px;
+}
 ul {
     font-size: 18px; line-height: 1.5;
     color: rgb(200, 200, 200);
@@ -55,6 +58,26 @@ hr {
     opacity: 50%;
 }
 
+/*display and position styles*/
+.inline {
+    display: inline;
+}
+.block {
+    display: block;
+}
+.inline-block {
+    display: inline-block
+}
+.relative {
+    position: relative;
+}
+.absolute {
+    position: absolute;
+}
+.align-left {text-align: left;}
+.align-center {text-align: center;}
+.align-right {text-align: right;}
+
 /*table*/
 table {
     border-collapse: collapse;
@@ -68,9 +91,6 @@ td {
     border: solid 1px;
     padding: 4px 12px 4px 12px;
 }
-.td-left {text-align: left;}
-.td-center {text-align: center;}
-.td-right {text-align: right;}
 
 /*text styles*/
 span.minor {
@@ -271,24 +291,37 @@ span.unbold {
     width: 100%;
 }
 
-/*ELMENENTS*/
+/*ELEMENTS*/
 
+/*button*/
 .button {
-    background-color: rgb(200, 200, 200);
-    border: solid 1px; border-radius: 5px;
-    font-size: 16px; text-align: center; color: rgb(50, 50, 50);
-    padding: 4px 4px 4px 4px;
+    box-sizing: border-box;
+    border: solid 1px rgb(200, 200, 200);
+    padding: 10px;
+    border-radius: 10px;
+    font-family: "Courier New"; font-size: 16px; text-align: center;
+    color: rgb(200, 200, 200);
+    background-color: rgb(50, 50, 50, 0);
+    cursor: pointer;
+    transition: color 0.3s, border 0.3s;
 }
 .button:hover {
-    background-color: rgb(180, 180, 180);
+    border-color: rgb(200, 200, 200, 0.8);
+    color: rgb(200, 200, 200, 0.8);
+    transition: color 0.3s, border 0.3s;
 }
 
 .text-entry {
-    border: solid 1px;
-    font-size: 16px;
-    padding: 4px 4px 4px 4px;
-    font-size: 16px;
+    box-sizing: border-box;
+    border: solid 1px rgb(200, 200, 200);
+    border-radius: 10px;
+    padding: 8px 10px 8px 10px;
+    font-size: 16px; color: rgb(50, 50, 50);
     cursor: text;
+}
+textarea {
+    resize: none;
+    height: 10em;
 }
 
 /*image holder*/
@@ -317,9 +350,9 @@ span.unbold {
     top: 50%;
     transform: translateY(-50%);
     padding: 5px 5px 5px 5px;
+    border-radius: 5px;
     background-color: rgb(50, 50, 50); opacity: 20%;
     transition: opacity 0.3s;
-    border-radius: 5px;
 }
 .slideshow .page-btn:hover {
     opacity: 50%;

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <title>Davis Liu - Contact</title>
+        <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
+        <link rel="stylesheet" href="css/global.css">
+        <link rel="stylesheet" href="css/icons.css">
+        <link rel="stylesheet" href="css/animations.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+        <style>
+            #contact #form-holder {
+                width: 80%;
+                line-height: 1.5;
+
+                label {
+                    font-size: 18px;
+                }
+                .text-entry {
+                    width: 100%;
+                }
+                .button {
+                    width: 100%;
+                }
+
+                #name-block, #email-block {
+                    width: 50%;
+                }
+                #message-block {
+                    width: 100%;
+                }
+                #button-block {
+                    width: 100%;
+                }
+
+                .star-rating i {
+                    cursor: pointer;
+                }
+                .star-rating i:hover {
+                    opacity: 80%;
+                    transition: opacity 0.3s;
+                }
+                .star-rating .fa-star {
+                    color: rgb(200, 200, 100);
+                }
+                .star-rating .fa-trash {
+                    color: rgb(200, 200, 200, 0.5);
+                }
+            }
+        </style>
+
+        <!--header scripts-->
+        <script src="src/animations.js"></script>
+    </head>
+
+    <body>
+        <!--info-->
+        <div class="_info">
+            <div id="nav-info">top-bar-contact</div>
+            <div id="path-info">~/contact</div>
+        </div>
+
+        <!--global-->
+        <div id="global">
+            <script src="src/load_global.js"></script>
+        </div>
+
+        <!--main-->
+        <div id="main">
+            <!--contact-->
+            <div id="contact" class="text-block align-center">
+                <h1>
+                    Contact Me
+                    <hr>
+                </h1>
+                <div id="form-holder" class="align-left inline-block">
+                    <form action="https://api.web3forms.com/submit" method="POST">
+                        <input type="hidden" name="access_key" value="de44bbf1-ea3f-49c4-aa04-f164dc8cd9e3">
+                        <!-- Honeypot Spam Protection -->
+                        <input type="checkbox" name="botcheck" hidden>
+                        <!-- Custom Confirmation / Success Page -->
+                        <!-- <input type="hidden" name="redirect" value="https://mywebsite.com/thanks.html"> -->
+
+                        <div id="name-block" class="inline-block">
+                            <div style="margin: 10px;">
+                                <label for="name"><b>Name:</b>*</label><br>
+                                <input class="text-entry" type="text" name="name" placeholder="Your Name" required>
+                            </div>
+                        </div><div id="email-block" class="inline-block">
+                            <div style="margin: 10px;">
+                                <label for="email"><b>Email:</b>*</label><br>
+                                <input class="text-entry" type="email" name="email" placeholder="Your Email" required>
+                            </div>
+                        </div><br>
+                        <div id="message-block" class="inline-block">
+                            <div style="margin: 10px;">
+                                <label for="messgage"><b>Message:</b>*</label><br>
+                                <textarea class="text-entry" name="message" placeholder="Your Message" required></textarea>
+                            </div>
+                        </div><br>
+                        <div id="" class="inline-block">
+                            <div style="margin: 10px;">
+                                <label for="rating"><b>Rate My Website:</b></label><br>
+                                <div id="star-rating-1" class="star-rating">
+                                    <i class="fa-solid fa-star" title="1/5"></i>
+                                    <i class="fa-solid fa-star" title="2/5"></i>
+                                    <i class="fa-solid fa-star" title="3/5"></i>
+                                    <i class="fa-solid fa-star" title="4/5"></i>
+                                    <i class="fa-solid fa-star" title="5/5"></i>&emsp;
+                                    <i class="fa-solid fa-trash" title="Clear rating"></i>
+                                    <input type="number" name="rating" id="rating" value="" hidden>
+                                    <span class="minor">
+                                        <label id="lbl">5/5</label>
+                                    </span>
+                                    <script>
+                                        {
+                                            let elem = document.querySelector("#star-rating-1");
+                                            let stars = elem.querySelectorAll(".fa-star");
+                                            let reset = elem.querySelector(".fa-trash");
+                                            let rating = elem.querySelector("#rating");
+                                            let lbl = elem.querySelector("#lbl");
+                                            function update() {
+                                                if (rating.value == "") {
+                                                    lbl.innerHTML = "(no rating)";
+                                                } else {
+                                                    lbl.innerHTML = rating.value+"/5";
+                                                }
+                                                for (let i = 0; i < stars.length; i++) {
+                                                    if (rating.value != "" && i+1 <= rating.value) {
+                                                        stars[i].classList.remove("fa-regular");
+                                                        stars[i].classList.add("fa-solid");
+                                                    } else {
+                                                        stars[i].classList.remove("fa-solid");
+                                                        stars[i].classList.add("fa-regular");
+                                                    }
+                                                }
+                                            }
+                                            reset.onclick = function () {
+                                                rating.value = "";
+                                                update();
+                                            }
+                                            for (let i = 0; i < stars.length; i++) {
+                                                stars[i].onclick = function() {
+                                                    rating.value = i+1;
+                                                    update();
+                                                }
+                                            }
+                                            update();
+                                        }
+                                    </script>
+                                </div>
+                            </div>
+                        </div><br>
+                        <div id="button-block" class="inline-block">
+                            <div style="margin: 10px;">
+                                <button class="button" type="submit">
+                                    Send
+                                    <i class="fa-regular fa-paper-plane"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="contact-icons">
+                    <h2>
+                        <a target="_blank" href="https://github.com/davisliu2006">
+                            <i id="github-icon" class="fa-brands fa-github"></i>
+                        </a>
+                        <a target="_blank" href="https://www.linkedin.com/in/davis-liu-5178b6252/">
+                            <i id="linkedin-icon" class="fa-brands fa-linkedin"></i>
+                        </a>
+                        <a target="_blank" href="https://www.instagram.com/davisliu2006/">
+                            <i id="instagram-icon" class="fa-brands fa-instagram"></i>
+                        </a>
+                    </h2>
+                </div>
+            </div>
+
+            <!--footer-->
+            <div id="footer">
+                <script src="src/load_footer.js"></script>
+            </div>
+        </div>
+
+        <!--scripts-->
+    </body>
+</html>
