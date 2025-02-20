@@ -1,16 +1,18 @@
 /*icon links*/
-#title-holder i, #footer i {
-    color: rgb(200, 200, 200, 0.5);
-}
-#title-holder i#github-icon:hover, #footer i#github-icon:hover {
-    color: rgb(255, 255, 255, 1);
-    transition: color 0.5s;
-}
-#title-holder i#linkedin-icon:hover, #footer i#linkedin-icon:hover {
-    color: rgb(45, 115, 174, 1);
-    transition: color 0.5s;
-}
-#title-holder i#instagram-icon:hover, #footer i#instagram-icon:hover {
-    color: rgb(180, 92, 137, 1);
-    transition: color 0.5s;
+.contact-icons {
+    i {
+        color: rgb(200, 200, 200, 0.5);
+    }
+    i#github-icon:hover {
+        color: rgb(255, 255, 255, 1);
+        transition: color 0.5s;
+    }
+    i#linkedin-icon:hover {
+        color: rgb(45, 115, 174, 1);
+        transition: color 0.5s;
+    }
+    i#instagram-icon:hover {
+        color: rgb(180, 92, 137, 1);
+        transition: color 0.5s;
+    }
 }
