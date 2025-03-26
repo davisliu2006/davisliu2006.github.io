@@ -183,6 +183,46 @@
             <!--projects-->
             <div id="projects" class="text-block">
                 <h2>Projects</h2>
+                <div class="project-box" id="project-box-sopj">
+                    <div class="slideshow" id="slideshow-sopj"
+                    style="float: right; height: 220px; margin: 30px 0px 25px 25px;">
+                        <div class="slideshow-frame">
+                            <div class="slideshow-inner">
+                                <img src="images/cp/sopj.png" alt="">
+                                <img src="images/cp/sopj2.jpg" alt="">
+                            </div>
+                        </div>
+                        <div class="page-btn" id="lbtn">
+                            <i class="fa-solid fa-arrow-left"></i>
+                        </div>
+                        <div class="page-btn" id="rbtn">
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </div>
+                        <div class="page-counter">
+                            1/1
+                        </div>
+                        <script>
+                            initSlideshow("#projects #slideshow-sopj");
+                        </script>
+                    </div>
+                    <h3>
+                        SOPJ Programming Judge
+                        <a class="project-link" target="_blank"
+                        href="https://github.com/davisliu2006/SOPJ">
+                            GitHub:
+                            <i class="fa-solid fa-link"></i>
+                        </a>
+                    </h3>
+                    <p>
+                        SOPJ is an online programming judge that executes and judges code in sandbox Docker containers. The web backend is created with Express and the database is implemented with MariaDB.
+                    </p>
+                    <p>
+                        <span class="minor">Built with: Docker, Express, MariaDB, TypeScript, EJS/HTML</span>
+                    </p>
+                    <script>
+                        initAnimInView("#project-box-sopj", "fade-in", 1, 2);
+                    </script>
+                </div>
                 <div class="project-box" id="project-box-doorsense">
                     <div class="image-holder"
                     style="float: left; height: 220px; margin: 30px 25px 25px 0px;">
