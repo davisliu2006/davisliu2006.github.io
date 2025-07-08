@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>Segmentation Fault</title>
+        <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
+        <link rel="stylesheet" href="css/global.css">
+        <link rel="stylesheet" href="css/animations.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+        <style>
+            pre {
+                font-family: "Courier New";
+                font-size: 16px;
+                text-wrap: wrap;
+            }
+            #bottom-text {
+                animation: fade-in 1s;
+                animation-delay: 2s;
+                animation-fill-mode: both;
+            }
+        </style>
+    </head>
+
+    <body>
+        <!--main-->
+        <div id="main">
+            <!--info-->
+            <div class="_info">
+                <div id="path-info">~/segfault</div>
+            </div>
+
+            <!--about-->
+            <div id="about" class="text-block">
+                <pre id="console"></pre>
+                <p id="bottom-text">
+                    <a class="link" href="index.html">Or click here to return to home page >></a>
+                </p>
+            </div>
+        </div>
+
+        <!--scripts-->
+        <script>
+            let text = `Segmentation fault\nExit code: 139\n\nJust like accessing invalid memory, the address you are trying to visit does not exist.\nPress ^C to exit`;
+            let element = document.querySelector("#console");
+            function animate1(i) {
+                element.innerHTML = text.substring(0, i);
+                if (i < text.length) {
+                    setTimeout(function() {
+                        animate1(i+1);
+                    }, 10);
+                } else {
+                    animate2(1);
+                }
+            }
+            function animate2(b) {
+                element.innerHTML = text+(b? "█" : " ");
+                setTimeout(function() {
+                    animate2(!b);
+                }, 1000);
+            }
+            animate1(0);
+
+            let status = 0;
+            window.addEventListener("keydown", function(e) {
+                if (e.key == "c") {status |= 1;}
+                else if (e.key == "Control") {status |= 2;}
+                if (status == 3) {
+                    window.location.assign("index.html");
+                }
+            });
+            window.addEventListener("keyup", function(e) {
+                if (e.key == "c") {status &= ~1;}
+                else if (e.key == "Control") {status &= ~2;}
+            });
+        </script>
+    </body>
+</html>
