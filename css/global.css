@@ -54,6 +54,9 @@ a {
     /*background-size: 100% 1px;
     transition: background-size 1s;*/
 }
+.indent {
+    margin-left: 1.5em;
+}
 hr {
     opacity: 50%;
 }
