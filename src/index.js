@@ -72,8 +72,9 @@ function indexMain() {
     function canvasAnimation() {
         let canvas = document.querySelector("#front-image-canvas");
         let ctx = canvas.getContext("2d");
-        let CX = canvas.clientWidth;
-        let CY = canvas.clientHeight;
+        let SCALE = (canvas.clientHeight > 1000? 900/canvas.clientHeight : 1);
+        let CX = canvas.clientWidth/SCALE;
+        let CY = canvas.clientHeight/SCALE;
         const NODE_R = 10;
         const N_NODE = 30;
         const N_EDGE = 50;
@@ -81,8 +82,9 @@ function indexMain() {
         canvas.height = CY;
 
         window.addEventListener("resize", function() {
-            CX = canvas.clientWidth;
-            CY = canvas.clientHeight;
+            SCALE = (canvas.clientHeight > 1000? 900/canvas.clientHeight : 1);
+            CX = canvas.clientWidth/SCALE;
+            CY = canvas.clientHeight/SCALE;
             canvas.width = CX;
             canvas.height = CY;
         })
