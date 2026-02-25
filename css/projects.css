@@ -8,6 +8,7 @@
 }
 .project-link {
     font-size: 18px;
+    font-weight: bold;
     color: rgb(200, 200, 200, 0.5);
     transition: color 0.5s;
 }

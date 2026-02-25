@@ -102,6 +102,9 @@ span.minor {
 span.unbold {
     font-weight: normal;
 }
+span.var-space {
+    font-family: "Arial";
+}
 
 /*aspect ratios*/
 .ratio-square {
