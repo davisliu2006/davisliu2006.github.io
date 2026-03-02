@@ -1,3 +1,9 @@
+/**
+ * @param {string} selector 
+ * @param {string} anim
+ * @param {number} start
+ * @param {number} end
+ */
 function initViewPosAnim(selector, anim, start, end) {
     let elem = document.querySelector(selector);
     elem.style["animation-name"] = anim;
@@ -21,6 +27,16 @@ function initViewPosAnim(selector, anim, start, end) {
     update();
 }
 
+/**
+ * @param {string} selector
+ * @param {string} anim
+ * @param {number} start
+ * @param {number} end
+ * @param {number} duration
+ * @param {number} anchor
+ * @param {number} delay
+ * @param {boolean} revert
+ */
 function initAnimInView(selector, anim, start, duration, anchor=0, delay=0, revert=false) {
     let elem = document.querySelector(selector);
     elem.style["animation-name"] = anim;

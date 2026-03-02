@@ -1,4 +1,8 @@
-function initSlideshow(selector) {
+/**
+ * @param {string} selector
+ * @param {boolean} wrap
+ */
+function initSlideshow(selector, wrap = true) {
     let slide = document.querySelector(selector);
     let lbtn = slide.querySelector("#lbtn");
     let rbtn = slide.querySelector("#rbtn");
@@ -10,7 +14,6 @@ function initSlideshow(selector) {
     console.log(imgs.length);
     frame.style.width = "0px";
 
-    let indx = 0;
 
     function setup() {
         let width = imgs[indx].clientWidth;
