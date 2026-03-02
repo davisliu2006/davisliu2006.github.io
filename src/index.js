@@ -71,6 +71,7 @@ function indexMain() {
     // front image animation
     function canvasAnimation() {
         let canvas = document.querySelector("#front-image-canvas");
+        /** @type {CanvasRenderingContext2D} */
         let ctx = canvas.getContext("2d");
         let SCALE = (canvas.clientHeight > 1000? 900/canvas.clientHeight : 1);
         let CX = canvas.clientWidth*SCALE;
@@ -102,9 +103,13 @@ function indexMain() {
                 this.u = u1; this.v = v1;
             }
         }
+        /** @type {Node[]} */
         let graph = Arr(N_NODE, null);
+        /** @type {number[]} */
         let nAttatch = Arr(N_NODE, 0);
+        /** @type {Edge[]} */
         let edges = Arr(N_EDGE, null);
+        /** @type {number[]} */
         let edgeLen = Arr(N_EDGE, 0);
         
         for (let i = 0; i < N_NODE; i++) {
