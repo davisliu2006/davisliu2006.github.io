@@ -234,6 +234,11 @@ span.var-space {
         transition: opacity 0.3s;
     }
 }
+@media screen and (max-aspect-ratio: 1) {
+    #top-bar-logo {
+        display: none;
+    }
+}
 
 /*footer*/
 #footer {
