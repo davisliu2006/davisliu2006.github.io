@@ -96,3 +96,14 @@ function Arr2d(sx, sy, v = 0) {
     }
     return arr;
 }
+
+/**
+ * @returns {boolean}
+ */
+function estimateIsPhone() {
+    if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
+        return window.innerWidth < 600;
+    } else {
+        return false;
+    }
+}
