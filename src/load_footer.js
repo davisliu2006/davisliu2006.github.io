@@ -1,5 +1,5 @@
 async function loadFooter() {
-    let response = await fetch("footer.html");
+    let response = await fetch("/footer.html");
     let text = await response.text();
     let footer = document.getElementById("footer");
     footer.innerHTML = text;
