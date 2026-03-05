@@ -1,5 +1,5 @@
 async function loadGlobal() {
-    let response = await fetch("global.html");
+    let response = await fetch("/global.html");
     let text = await response.text();
     let global = document.getElementById("global");
     global.innerHTML = text;
@@ -8,7 +8,9 @@ async function loadGlobal() {
     let navInfo = document.querySelector("._info #nav-info");
     if (navInfo) {
         let navBtn = document.getElementById(navInfo.innerHTML);
-        navBtn.classList.add("active");
+        if (navBtn) {
+            navBtn.classList.add("active");
+        }
     }
 
     // top bar path
