@@ -446,3 +446,67 @@ textarea {
         margin-left: 2%; margin-right: 2%;
     }
 }
+
+/*modal*/
+.modal-group {
+    position: fixed;
+    visibility: hidden;
+}
+.modal {
+    visibility: hidden;
+    opacity: 0%;
+    transition: visibility 0.2s, opacity 0.2s;
+}
+.modal.active {
+    visibility: visible;
+    opacity: 100%;
+    transition: visibility 0.2s, opacity 0.2s;
+}
+@media screen and (max-aspect-ratio: 1)  {
+    .modal {
+        visibility: hidden !important;
+    }
+}
+.modal-background {
+    z-index: 200;
+    position: fixed;
+    top: 0px; left: 0px;
+    width: 100vw; height: 100vh;
+    background-color: rgb(50, 50, 50, 0.8);
+}
+.modal-frame {
+    z-index: 201;
+    position: fixed;
+    top: 50vh; left: 50vw;
+    transform: translate(-50%, -50%) scale(0.9);
+    background-color: rgb(50, 50, 50);
+    padding: 10px 20px 20px 20px;
+    border-radius: 10px;
+    border: 1px solid rgb(200, 200, 200);
+    transition: transform 0.2s;
+}
+.modal.active .modal-frame {
+    transform: translate(-50%, -50%) scale(1);
+    transition: transform 0.2s;
+}
+.modal-bar {
+    width: 100%; height: fit-content;
+    margin-bottom: 10px;
+    text-align: right;
+}
+.modal-bar .modal-btn {
+    display: inline;
+    margin: 5px 7px 5px 7x;
+    font-size: 12px;
+    padding: 5px 10px 5px 10px; border-radius: 5px;
+    background-color: rgb(200, 200, 200, 0);
+    transition: background-color 0.3s;
+    cursor: pointer;
+}
+.modal-bar .modal-btn:hover {
+    background-color: rgb(200, 200, 200, 0.3);
+    transition: background-color 0.3s;
+}
+.modal-inner {
+    width: 100%;
+}
