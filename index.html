@@ -102,6 +102,7 @@
         <script src="src/global.js"></script>
         <script src="src/slideshows.js"></script>
         <script src="src/collapsables.js"></script>
+        <script src="src/modals.js"></script>
         <script src="src/animations.js"></script>
     </head>
 
@@ -515,6 +516,85 @@
             <!--footer-->
             <div id="footer">
                 <script src="src/load_footer.js"></script>
+            </div>
+        </div>
+        
+        <!--modals-->
+        <div class="modal-group">
+            <div class="modal" id="modal-sopj">
+                <div class="modal-background"></div>
+                <div class="modal-frame">
+                    <div class="modal-bar">
+                        <div class="modal-btn" id="close-btn">
+                            <i class="fa-solid fa-x"></i>
+                        </div>
+                    </div>
+                    <div class="modal-inner">
+                        <div class="slideshow" id="slideshow-sopj"
+                        style="height: 60vh;">
+                            <div class="slideshow-frame">
+                                <div class="slideshow-inner">
+                                    <img src="images/cp/sopj.webp" alt="">
+                                    <img src="images/cp/sopj2.webp" alt="">
+                                    <img src="images/cp/sopj3.webp" alt="">
+                                </div>
+                            </div>
+                            <div class="page-btn" id="lbtn">
+                                <i class="fa-solid fa-arrow-left"></i>
+                            </div>
+                            <div class="page-btn" id="rbtn">
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </div>
+                            <div class="page-counter">
+                                1/1
+                            </div>
+                            <script>
+                                initSlideshow("#modal-sopj #slideshow-sopj");
+                            </script>
+                        </div>
+                    </div>
+                </div>
+                <script>
+                    initModal("#projects #slideshow-sopj .slideshow-frame", "#modal-sopj");
+                </script>
+            </div>
+            <div class="modal" id="modal-vrc">
+                <div class="modal-background"></div>
+                <div class="modal-frame">
+                    <div class="modal-bar">
+                        <div class="modal-btn" id="close-btn">
+                            <i class="fa-solid fa-x"></i>
+                        </div>
+                    </div>
+                    <div class="modal-inner">
+                        <div class="slideshow" id="slideshow-vrc"
+                        style="height: 60vh;">
+                            <div class="slideshow-frame">
+                                <div class="slideshow-inner">
+                                    <img src="images/robotics/robot1.webp" alt="">
+                                    <img src="images/robotics/robot2.webp" alt="">
+                                    <img src="images/robotics/dark.webp" alt="">
+                                    <img src="images/robotics/ratchet.webp" alt="">
+                                </div>
+                            </div>
+                            <div class="page-btn" id="lbtn">
+                                <i class="fa-solid fa-arrow-left"></i>
+                            </div>
+                            <div class="page-btn" id="rbtn">
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </div>
+                            <div class="page-counter">
+                                1/1
+                            </div>
+                            <script>
+                                initSlideshow("#modal-vrc #slideshow-vrc");
+                            </script>
+                        </div>
+                    </div>
+                </div>
+                <script>
+                    initModal("#projects #slideshow-vrc .slideshow-frame", "#modal-vrc");
+                </script>
             </div>
         </div>
 
