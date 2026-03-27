@@ -2,11 +2,28 @@
  * @param {string} selector 
  */
 function initCollapsable(selector) {
-    let collapsable = document.querySelector(selector);
-    let btn = collapsable.querySelector(".collapsable-btn");
+    let collapsable = querySelectorNonNull(document, selector);
+    _initCollapsable(collapsable);
+}
+
+/**
+ * @param {string} selector 
+ */
+function initCollapsables(selector) {
+    let collapsables = document.querySelectorAll(selector);
+    for (let collapsable of collapsables) {
+        _initSlideshow(collapsable);
+    }
+}
+
+/**
+ * @param {Element} collapsable
+ */
+function _initCollapsable(collapsable) {
+    let btn = querySelectorNonNull(collapsable, ".collapsable-btn");
     let btnIcon = btn.querySelector("i");
-    let frame = collapsable.querySelector(".collapsable-frame")
-    let inner = collapsable.querySelector(".collapsable-inner");
+    let frame = querySelectorNonNull(collapsable, ".collapsable-frame");
+    let inner = querySelectorNonNull(frame, ".collapsable-inner");
     
     let active = false;
 
