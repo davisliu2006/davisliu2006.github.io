@@ -7,6 +7,20 @@ async function fetchText(file) {
     return await (await fetch(file)).text();
 }
 
+// dom
+/**
+ * @param {Document | Element} parent
+ * @param {string} selector 
+ * @returns {Element}
+ */
+function querySelectorNonNull(parent, selector) {
+    let elem = parent.querySelector(selector);
+    if (!elem) {
+        throw new Error(`querySelectorNonNull: selector "${selector}" is null or undefined`);
+    }
+    return elem;
+}
+
 // math
 /**
  * @param {number} val

@@ -5,7 +5,7 @@
  * @param {number} end
  */
 function initViewPosAnim(selector, anim, start, end) {
-    let elem = document.querySelector(selector);
+    let elem = querySelectorNonNull(document, selector);
     elem.style["animation-name"] = anim;
     elem.style["animation-duration"] = "1s";
     elem.style["animation-play-state"] = "paused";
@@ -38,7 +38,7 @@ function initViewPosAnim(selector, anim, start, end) {
  * @param {boolean} revert
  */
 function initAnimInView(selector, anim, start, duration, anchor=0, delay=0, revert=false) {
-    let elem = document.querySelector(selector);
+    let elem = querySelectorNonNull(document, selector);
     elem.style["animation-name"] = anim;
     elem.style["animation-duration"] = duration+"s";
     elem.style["animation-play-state"] = "paused";

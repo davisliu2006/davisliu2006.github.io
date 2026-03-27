@@ -3,16 +3,68 @@
  * @param {boolean} wrap
  */
 function initSlideshow(selector, wrap = true) {
-    let slide = document.querySelector(selector);
+    let slide = querySelectorNonNull(document, selector);
+    _initSlideshow(slide, wrap);
+}
+
+/**
+ * @param {string} selector
+ * @param {boolean} wrap
+ */
+function initSlideshows(selector, wrap = true) {
+    let slides = document.querySelectorAll(selector);
+    for (let slide of slides) {
+        _initSlideshow(slide, wrap);
+    }
+}
+
+/**
+ * @param {Element} slide
+ * @param {boolean} wrap
+ */
+function _initSlideshow(slide, wrap = true) {
+    /**
+     * @param {boolean} isRight
+     * @returns {Element}
+     */
+    function btnTemplate(isRight) {
+        let btn = document.createElement("div");
+        btn.id = isRight? "rbtn" : "lbtn";
+        btn.classList.add("page-btn");
+        btn.innerHTML = `<i class=\"fa-solid fa-arrow-${isRight? "right" : "left"}\"></i>`;
+        return btn;
+    }
+    /**
+     * @returns {Element}
+     */
+    function pgCountTemplate() {
+        let div = document.createElement("div");
+        div.classList.add("page-counter");
+        return div;
+    }
+
     let lbtn = slide.querySelector("#lbtn");
     let rbtn = slide.querySelector("#rbtn");
     let pgCount = slide.querySelector(".page-counter");
-    let frame = slide.querySelector(".slideshow-frame");
-    let inner = slide.querySelector(".slideshow-inner");
+    let frame = querySelectorNonNull(slide, ".slideshow-frame");
+    let inner = querySelectorNonNull(frame, ".slideshow-inner");
     let imgs = slide.querySelectorAll("img");
     console.log(inner);
     console.log(imgs.length);
     frame.style.width = "0px";
+
+    if (!lbtn) {
+        lbtn = btnTemplate(false);
+        slide.append(lbtn);
+    }
+    if (!rbtn) {
+        rbtn = btnTemplate(true);
+        slide.append(rbtn);
+    }
+    if(!pgCount) {
+        pgCount = pgCountTemplate();
+        slide.append(pgCount);
+    }
 
     let indx = (wrap? 1 : 0);
 

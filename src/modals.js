@@ -3,9 +3,17 @@
  * @param {string} selectorModal
  */
 function initModal(selectorBase, selectorModal) {
-    let baseElem = document.querySelector(selectorBase);
-    let modalElem = document.querySelector(selectorModal);
-    let closeBtn = modalElem.querySelector("#close-btn");
+    let baseElem = querySelectorNonNull(document, selectorBase);
+    let modalElem = querySelectorNonNull(document, selectorModal);
+    _initModal(baseElem, modalElem);
+}
+
+/**
+ * @param {Element} baseElem
+ * @param {Element} modalElem
+ */
+function _initModal(baseElem, modalElem) {
+    let closeBtn = querySelectorNonNull(modalElem, "#close-btn");
     let background = modalElem.querySelector(".modal-background");
     
     let is_active = false;
