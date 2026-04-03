@@ -1,5 +1,5 @@
 /**
- * @param {string} selector 
+ * @param {string} selector
  */
 function initCollapsable(selector) {
     let collapsable = querySelectorNonNull(document, selector);
@@ -7,12 +7,12 @@ function initCollapsable(selector) {
 }
 
 /**
- * @param {string} selector 
+ * @param {string} selector
  */
 function initCollapsables(selector) {
     let collapsables = document.querySelectorAll(selector);
     for (let collapsable of collapsables) {
-        _initSlideshow(collapsable);
+        _initCollapsable(collapsable);
     }
 }
 
