@@ -322,6 +322,9 @@ span.var-space {
     color: rgb(200, 200, 200, 0.8);
     transition: color 0.3s, border 0.3s;
 }
+.button.inline {
+    padding: 8px 10px 8px 10px;
+}
 
 .text-entry {
     box-sizing: border-box;
@@ -449,10 +452,12 @@ textarea {
 
 /*modal*/
 .modal-group {
+    z-index: 200;
     position: fixed;
     visibility: hidden;
 }
 .modal {
+    z-index: 200;
     visibility: hidden;
     opacity: 0%;
     transition: visibility 0.2s, opacity 0.2s;
@@ -468,14 +473,14 @@ textarea {
     }
 }
 .modal-background {
-    z-index: 200;
+    z-index: 0;
     position: fixed;
     top: 0px; left: 0px;
     width: 100vw; height: 100vh;
     background-color: rgb(50, 50, 50, 0.8);
 }
 .modal-frame {
-    z-index: 201;
+    z-index: 1;
     position: fixed;
     top: 50vh; left: 50vw;
     transform: translate(-50%, -50%) scale(0.9);
