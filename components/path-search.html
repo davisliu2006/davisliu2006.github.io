@@ -1,0 +1,39 @@
+<div class="search-modal modal">
+    <style>
+        .search-row .text-entry {
+            width: 300px;
+        }
+        .search-suggestions {
+            margin-top: 20px;
+            color: rgb(200, 200, 200, 0.5);
+        }
+        .search-suggestion {
+            display: block;
+            padding: 5px 10px 5px 10px;
+            border-radius: 5px;
+            background-color: rgb(200, 200, 200, 0);
+            transition: background-color 0.2s;
+        }
+        .search-suggestion:hover, form:focus-within .search-suggestion.active {
+            background-color: rgb(200, 200, 200, 0.1);
+            transition: background-color 0.2s;
+        }
+    </style>
+    <div class="modal-background"></div>
+    <div class="modal-frame">
+        <form>
+            <div class="modal-bar">
+                <div class="modal-btn" id="close-btn">
+                    <i class="fa-solid fa-x"></i>
+                </div>
+            </div>
+            <div class="modal-inner">
+                <div class="search-row">
+                    <input class="text-entry" type="text" placeholder="Search...">
+                    <button class="button inline" type="submit">Search</button>
+                </div>
+                <div class="search-suggestions"></div>
+            </div>
+        </form>
+    </div>
+</div>
