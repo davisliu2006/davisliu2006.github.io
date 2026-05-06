@@ -487,7 +487,7 @@ textarea {
     background-color: rgb(50, 50, 50);
     padding: 10px 20px 20px 20px;
     border-radius: 10px;
-    border: 1px solid rgb(200, 200, 200);
+    border: 1px solid rgb(200, 200, 200, 0.7);
     transition: transform 0.2s;
 }
 .modal.active .modal-frame {

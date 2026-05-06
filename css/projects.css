@@ -5,6 +5,11 @@
     padding: 0px 25px 0px 25px;
     margin: 15px 0px 15px 0px;
     overflow: hidden;
+    transition: border-color 0.5s;
+}
+.project-box:hover {
+    border-color: rgb(200, 200, 200, 0.6);
+    transition: border-color 0.5s;
 }
 .project-link {
     font-size: 18px;
