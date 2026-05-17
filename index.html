@@ -196,6 +196,24 @@
             <!--projects-->
             <div id="projects" class="text-block">
                 <h2>Projects</h2>
+                <div class="project-box" id="project-box-interpreter">
+                    <h3>
+                        Custom Language Interpreter
+                        <a class="project-link" target="_blank"
+                        href="https://github.com/davisliu2006/Interpreter">
+                            GitHub:<span class="var-space"> </span><i class="fa-solid fa-link"></i>
+                        </a>
+                    </h3>
+                    <p>
+                        This project is a simple custom programming language interpreter consisting of a syntax parser, bytecode generator, and VM architecture. The interpreter supports various control structures, recursive functions, and arbitrary-depth expression evaluation. It also implements a custom heap memory management system and some compile-time optimizations. 
+                    </p>
+                    <p>
+                        <span class="minor">Built with: C++</span>
+                    </p>
+                    <script>
+                        initAnimInView("#project-box-interpreter", "fade-in", 1, 2);
+                    </script>
+                </div>
                 <div class="project-box" id="project-box-sopj">
                     <div class="slideshow" id="slideshow-sopj"
                     style="float: right; height: 220px; margin: 30px 0px 25px 25px;">
@@ -245,10 +263,10 @@
                         </a>
                     </h3>
                     <p>
-                        This project was an attempt at creating a simple chess engine in C++. The engine selects the next move using a minimax algorithm, which computes a move that guarentees the maximum value of an evaluation function over possible game states after a certain recursion depth. A higher depth produces better results while requiring more computational time. The engine also supports multithreading to leverage modern mutli-core processors and compute moves concurrently.
+                        This project was an attempt at creating a simple chess engine in C++. The engine computes the next move using a minimax algorithm, which guarentees obtaining the maximum value of an evaluation function over possible game states after a certain recursion depth. A higher depth produces better results while requiring more computational time. The engine also supports multithreading to leverage modern mutli-core processors and compute moves concurrently.
                     </p>
                     <p>
-                        <span class="minor">Built with: C++</span>
+                        <span class="minor">Built with: C++, multithreading, Electron + NAPI (for UI wrapper)</span>
                     </p>
                     <script>
                         initAnimInView("#project-box-chess", "fade-in", 1, 2);
