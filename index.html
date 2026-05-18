@@ -242,10 +242,10 @@
                         </a>
                     </h3>
                     <p>
-                        SOPJ is an online programming judge that executes and judges code in sandbox Docker containers. The web backend is created with Express and the database is implemented with MariaDB.
+                        SOPJ is an online programming judge that executes and judges code in sandbox Docker containers. The web backend is created with Express and MariaDB.
                     </p>
                     <p>
-                        The judge supports code execution in C++, Java, and Python. It also features Markdown and LaTeX rendering and an embedded code editor.
+                        The judge supports timed code execution in C++, Java, and Python. It also features Markdown and LaTeX rendering for problem statements and an embedded code editor on the submission page.
                     </p>
                     <p>
                         <span class="minor">Built with: Docker, Express, MariaDB, TypeScript, EJS/HTML</span>
@@ -331,10 +331,10 @@
                         </a>
                     </h3>
                     <p>
-                        Joining my high school's VEX team was an important part of my journey into the engineering field. Through teamwork and competition over multiple seasons, we learned valuable lessons about problem-solving and formed lifelong bonds with our teammates.
+                        Joining my high school's VEX team was an important part of my journey into engineering. Through teamwork and competition over multiple seasons, we learned valuable lessons about solving complex, open-ended challenges.
                     </p>
                     <p>
-                        During the 2023-2024 season, our team, 3652B, worked together on a robot we named "Sniffy". For the first time, I was involved in the CAD and mechanical aspects alongside the programming, where I discovered my interest in mechanical design and engineering fields outside of software.
+                        During the 2023-2024 season, our team, 3652B, worked together on a robot we named "Sniffy". For the first time, I was involved in CAD and mechanical design alongside programming, where I discovered my interest in engineering fields beyond software.
                     </p>
                     <script>
                         initAnimInView("#project-box-vrc", "fade-in", 1, 2);
@@ -367,7 +367,7 @@
                         </a>
                     </h3>
                     <p>
-                        During my two years at UHS Robotics, we worked on an adaptable programming library for our team's code built with the <a class="link" target="_blank" href="https://pros.cs.purdue.edu/">Perdue PROS API</a>. Our library featured accurate sensing and autonomous driving using self-correcting feedback loops, a simple GUI menu to select between different settings, debugging displays, and various operator-controlled functionality.
+                        During my two years at UHS Robotics, we worked on an adaptable programming library for our team's code built with the <a class="link" target="_blank" href="https://pros.cs.purdue.edu/">Perdue PROS API</a>. Our library featured accurate sensing and autonomous driving using self-correcting feedback loops, a simple GUI menu to select different settings, debugging displays for sensors, and various operator-controlled functionality.
                     </p>
                     <p>
                         <span class="minor">Built with: C++, PROS</span>
@@ -376,59 +376,17 @@
                         initAnimInView("#project-box-proglib", "fade-in", 1, 2);
                     </script>
                 </div>
-                <div class="project-box" id="project-box-guidebot">
-                    <div class="slideshow" id="slideshow-guidebot"
-                    style="float: right; height: 200px; margin: 30px 0px 25px 25px;">
-                        <div class="slideshow-frame">
-                            <div class="slideshow-inner">
-                                <img src="/images/hackathon/guidebot.webp" alt="">
-                                <img src="/images/hackathon/guidebot2.png" alt="">
-                            </div>
-                        </div>
-                        <div class="page-btn" id="lbtn">
-                            <i class="fa-solid fa-arrow-left"></i>
-                        </div>
-                        <div class="page-btn" id="rbtn">
-                            <i class="fa-solid fa-arrow-right"></i>
-                        </div>
-                        <script>
-                            initSlideshow("#projects #slideshow-guidebot");
-                        </script>
-                    </div>
-                    <h3>
-                        GuideBot
-                        <a class="project-link" target="_blank"
-                        href="https://devpost.com/software/guidebot">
-                            Devpost:<span class="var-space"> </span><i class="fa-solid fa-link"></i>
-                        </a>
-                        <a class="project-link" target="_blank"
-                        href="https://github.com/davisliu2006/GuideBot">
-                            GitHub:<span class="var-space"> </span><i class="fa-solid fa-link"></i>
-                        </a>
-                    </h3>
-                    <p>
-                        GuideBot is a project that I pitched with a team at <a class="link" target="_blank" href="https://hackthe6ix2023.devpost.com/">Hack the 6ix</a>, which aims to create a prototype navigation system for visually impaired individuals using robotics and artificial intelligence.
-                    </p>
-                    <p>
-                        Although our initial Arduino-based hardware model was insufficiently powerful, our project successfully featured a web-based simulation of the robot's theoretical operation along with an AI object recognition program to enhance its capabilities.
-                    </p>
-                    <p>
-                        <span class="minor">Built with: Arduino, C++, JavaScript, TensorFlow, HTML</span>
-                    </p>
-                    <script>
-                        initAnimInView("#project-box-guidebot", "fade-in", 1, 2);
-                    </script>
-                </div>
                 <!--see more-->
                 <div id="collapsable-1" class="collapsable">
                     <div class="collapsable-frame">
                         <div class="collapsable-inner">
-                            <div class="project-box">
-                                <div class="slideshow" id="slideshow-iwitness"
-                                style="float: right; height: 180px; margin: 30px 0px 25px 25px;">
+                            <div class="project-box" id="project-box-guidebot">
+                                <div class="slideshow" id="slideshow-guidebot"
+                                style="float: right; height: 200px; margin: 30px 0px 25px 25px;">
                                     <div class="slideshow-frame">
                                         <div class="slideshow-inner">
-                                            <img src="/images/hackathon/iwitness.jpg" alt="">
+                                            <img src="/images/hackathon/guidebot.webp" alt="">
+                                            <img src="/images/hackathon/guidebot2.png" alt="">
                                         </div>
                                     </div>
                                     <div class="page-btn" id="lbtn">
@@ -438,8 +396,34 @@
                                         <i class="fa-solid fa-arrow-right"></i>
                                     </div>
                                     <script>
-                                        initSlideshow("#projects #slideshow-iwitness");
+                                        initSlideshow("#projects #slideshow-guidebot");
                                     </script>
+                                </div>
+                                <h3>
+                                    GuideBot
+                                    <a class="project-link" target="_blank"
+                                    href="https://devpost.com/software/guidebot">
+                                        Devpost:<span class="var-space"> </span><i class="fa-solid fa-link"></i>
+                                    </a>
+                                    <a class="project-link" target="_blank"
+                                    href="https://github.com/davisliu2006/GuideBot">
+                                        GitHub:<span class="var-space"> </span><i class="fa-solid fa-link"></i>
+                                    </a>
+                                </h3>
+                                <p>
+                                    GuideBot is a project that I built with a team at <a class="link" target="_blank" href="https://hackthe6ix2023.devpost.com/">Hack the 6ix</a>, which aims to create a prototype navigation system for visually impaired individuals using robotics and computer vision.
+                                </p>
+                                <p>
+                                    Although our initial Arduino-based hardware model was insufficiently powerful, our project successfully featured a web-based simulation of the robot's theoretical operation and an AI object recognition program to enhance its capabilities.
+                                </p>
+                                <p>
+                                    <span class="minor">Built with: Arduino, C++, JavaScript, TensorFlow, HTML</span>
+                                </p>
+                            </div>
+                            <div class="project-box">
+                                <div class="image-holder"
+                                style="float: left; height: 190px; margin: 30px 25px 25px 0px;">
+                                    <img src="/images/hackathon/iwitness.jpg" alt="">
                                 </div>
                                 <h3>
                                     IWitness
@@ -453,7 +437,7 @@
                                     </a>
                                 </h3>
                                 <p>
-                                    This was my first hackathon project, created with a team at <a class="link" target="_blank" href="https://yrhacks-2023.devpost.com/">YRHacks</a>, which aims to create a surveillance system to aid first responders such as law enforcement and emergency personnel in identifying unexpected situations for a prompt arrival at scene. This project was my first significant exposure to back-end web development as well as neural network libraries such as TensorFlow.
+                                    This was my first hackathon project, created with a team at <a class="link" target="_blank" href="https://yrhacks-2023.devpost.com/">YRHacks</a>, which aims to create a surveillance system to aid first responders such as law enforcement and emergency personnel in identifying unexpected situations for a prompt arrival at scene. This project was my first exposure to web development and TensorFlow.
                                 </p>
                                 <p>
                                     <span class="minor">Built with: JavaScript, TensorFlow, HTML</span>
@@ -461,7 +445,7 @@
                             </div>
                             <div class="project-box">
                                 <div class="image-holder"
-                                style="float: left; height: 120px; margin: 30px 25px 25px 0px;">
+                                style="float: right; height: 120px; margin: 30px 0px 25px 25px;">
                                     <img src="/images/cp/uacc.webp" alt="">
                                 </div>
                                 <h3>
