@@ -308,7 +308,7 @@ span.var-space {
 /*button*/
 .button {
     box-sizing: border-box;
-    border: solid 1px rgb(200, 200, 200);
+    border: solid 1px rgb(200, 200, 200, 0.7);
     padding: 10px;
     border-radius: 10px;
     font-family: "Courier New"; font-size: 16px; text-align: center;
@@ -318,7 +318,7 @@ span.var-space {
     transition: color 0.3s, border 0.3s;
 }
 .button:hover {
-    border-color: rgb(200, 200, 200, 0.8);
+    border-color: rgb(200, 200, 200, 0.5);
     color: rgb(200, 200, 200, 0.8);
     transition: color 0.3s, border 0.3s;
 }
@@ -412,7 +412,7 @@ textarea {
 .collapsable {
     position: relative;
     overflow: hidden;
-    border: solid 1px rgb(200, 200, 200);
+    border: solid 1px rgb(200, 200, 200, 0.7);
     border-radius: 10px;
     padding-top: 42px;
 }
@@ -428,8 +428,8 @@ textarea {
     transition: color 0.3s, background-color 0.3s;
 }
 .collapsable-btn:hover {
-    color: rgb(200, 200, 200, 0.7);
-    background-color: rgb(200, 200, 200, 0.05);
+    color: rgb(200, 200, 200, 0.8);
+    background-color: rgb(200, 200, 200, 0.04);
     transition: color 0.3s, background-color 0.3s;
 }
 .collapsable-btn i {

@@ -1,6 +1,6 @@
 /*project box*/
 .project-box {
-    border: solid 1px rgb(200, 200, 200);
+    border: solid 1px rgb(200, 200, 200, 0.7);
     border-radius: 10px;
     padding: 0px 25px 0px 25px;
     margin: 15px 0px 15px 0px;
@@ -8,7 +8,7 @@
     transition: border-color 0.5s;
 }
 .project-box:hover {
-    border-color: rgb(200, 200, 200, 0.6);
+    border-color: rgb(200, 200, 200, 0.5);
     transition: border-color 0.5s;
 }
 .project-link {
