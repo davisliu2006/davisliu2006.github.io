@@ -80,6 +80,11 @@ hr {
 .align-left {text-align: left;}
 .align-center {text-align: center;}
 .align-right {text-align: right;}
+.inline-svg {
+    display: inline-block;
+    width: 1.2em; height: 1.2em;
+    vertical-align: middle;
+}
 
 /*table*/
 table {
@@ -243,9 +248,16 @@ span.var-space {
 /*footer*/
 #footer {
     position: relative;
+}
+#footer hr {
     width: 90%;
-    padding: 70px 5% 70px 5%;
-    background-color: rgb(45, 45, 45);
+}
+#footer-content {
+    display: flex; flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+    width: 90%;
+    padding: 20px 5% 20px 5%;;
 }
 #sub-footer {
     position: absolute;
@@ -254,8 +266,15 @@ span.var-space {
     background-color: inherit;
 }
 .footer-block {
-    margin-right: 50px;
     display: inline-block;
+}
+.footer-block.left {
+    text-align: left;
+    margin-right: 50px;
+}
+.footer-block.right {
+    text-align: right;
+    margin-left: 50px;
 }
 
 /*loading screen*/
