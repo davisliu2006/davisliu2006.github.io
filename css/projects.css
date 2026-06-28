@@ -12,6 +12,7 @@
     transition: border-color 0.5s;
 }
 .project-link {
+    margin-left: 10px;
     font-size: 18px;
     font-weight: bold;
     color: rgb(200, 200, 200, 0.5);
