@@ -16,5 +16,6 @@ async function loadFooter() {
     }
     window.addEventListener("resize", cover);
     cover();
+    initIcons();
 }
 loadFooter();
