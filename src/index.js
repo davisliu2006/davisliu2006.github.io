@@ -32,8 +32,7 @@ function indexMain() {
         let sections = [
             document.querySelector("#front-image"),
             document.querySelector("#about"),
-            document.querySelector("#projects"),
-            document.querySelector("#portfolio")
+            document.querySelector("#projects")
         ];
         let navBtns = [
             document.querySelector("#top-bar-home"),

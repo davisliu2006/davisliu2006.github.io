@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <title>Davis Liu - Blog</title>
+        <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon">
+        <link rel="stylesheet" href="/css/global.css">
+        <link rel="stylesheet" href="/css/icons.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.12.0/styles/github-dark.css">
+        <style>
+            
+        </style>
+
+        <!--header scripts-->
+        <script src="/src/global.js"></script>
+        <script src="/src/icons.js"></script>
+        <script src="/src/modals.js"></script>
+        <script src="/src/slideshows.js"></script>
+        <script defer src="/src/mathjax_config.js"></script>
+        <script id="MathJax-script" defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+        <script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.12.0/highlight.min.js"></script>
+    </head>
+
+    <body>
+        <!--global-->
+        <div id="global">
+            <script src="/src/load_global.js"></script>
+        </div>
+
+        <!--main-->
+        <div id="main">
+            <!--info-->
+            <div class="_info">
+                <div id="nav-info">top-bar-blog</div>
+                <div id="path-info">~/blog/neural-network</div>
+            </div>
+
+            <!--about-->
+            <div id="about" class="text-block">
+                <h1>Building a Neural Network From Scratch</h1>
+                <p><span class="minor">
+                    by Davis Liu, Sept 2026
+                </span></p>
+                <div class="image-holder"
+                style="float: right; height: 250px; margin: 0px 0px 30px 30px;">
+                    <img src="/images/other-projects/neural.svg" alt="">
+                </div>
+                <p>
+                    Neural networks are foundational to the most powerful implementations of machine learning. They allow computers to use existing training data to predict output for new data by discovering patterns without explicit programming.
+                </p>
+                <p>
+                    A neural network consists of layers of neurons where the activation level of neurons in each layer are determined by the activation levels of the previous layer. Each layer of $n$ neurons can be modelled as an $n$-dimensional vector where the transitions between layers are done by applying transformations to the vector.
+                </p>
+                <h2>Modeling the Neural Network</h2>
+                <blockquote>
+                    For this analysis, we will use the row vector convention rather than the typical column vector convention used in most mathematics. So $\vec{v}T$ means apply $T$ transformation to $\vec{v}$, which is more consistent with the semantics of operators in programming and allows in place operations such as <code>v *= M</code>.
+                </blockquote>
+                <p>
+                    The easiest way to model the transition between layers is by using a <b>linear transformation</b> (with translation) and applying a non-linear activation function $f(x)$ to the result. The linear transformation can be done by applying the following operations in succession:
+                </p>
+                <ol>
+                    <li>A <b>matrix multiplication</b> to represent the <b>weights</b> at which each neuron in the previous layer influences each neuron in the next layer</li>
+                    <li>A <b>linear translation</b> by adding a vector called the <b>bias</b></li>
+                </ol>
+                <p>
+                    We can construct a network with input size $I$, output size $O$, and $n-1$ hidden layers of size $H$ (applies $n$ transformations in total). Let $a_0, \dots, a_n$ be the activation vectors for each layer, where $a_0 \in \mathbb{R}^I$ is the input vector and $a_n \in \mathbb{R}^O$ is the output vector.
+                </p>
+                <p>
+                    We can denote the weights and biases for each layer $1 \le i \le n$ as matrix $W_i$ and vector $b_i$. <span class="minor">Note that $W_1 \in \mathbb{R}^{I \times H}$, $\{W_2, \dots W_{n-1}\} \in \mathbb{R}^{H \times H}$, $W_n \in \mathbb{R}^{H \times O}$, $\{b_1, \dots b_{n-1}\} \in \mathbb{R}^{H}$, and $b_n \in \mathbb{R}^{O}$.</span> Then, for every layer:
+                </p>
+                <p class="eqn-big">
+                    $$\vec{a}_i = f(\vec{a}_{i-1}W_i + \vec{b}_i)$$
+                </p>
+                <p>
+                    It is also convenient to define the pre-activation vector $z_i:$
+                </p>
+                <p class="eqn-big">
+                    $$\vec{z}_i = f^{-1}(\vec{a}_i) = \vec{a}_{i-1}W_i + \vec{b}_i$$
+                </p>
+                <h3>Selecting the Activation Function</h3>
+                <p>
+                    There are several conventional choices for the activation function, but in general, it should have the following properties:
+                </p>
+                <ul>
+                    <li><b>Non-linear:</b> This is essential in order for the multiple layers of the network to take effect. If $f(x)$ was linear, then the transformations applied by the layers would could be simplified to a single linear transformation.</li>
+                    <li><b>Differentiable:</b> This allows us to calculate gradients for the function in order to use gradient descent algorithms.</li>
+                    <li><b>Monotonically increasing ($\ge$):</b> A greater weight should correspond to a greater or equal activation.</li>
+                </ul>
+                <p>
+                    Typically, the function is one of the following (or some variant):
+                </p>
+                <ul class="spaced">
+                    <li>
+                        <b>Sigmoid:</b> $f(x) = \frac{1}{1 + e^{-x}}$
+                        <ul>
+                            <li>Smooth s-shaped curve with horizontal asymptotes at $0$ (min) and $1$ (max) centered at $x = 0$.</li>
+                            <li>This offers a good range of values constrained from $0$ to $1$, making it particularly useful for the final layer (eg. to represent probabilities).</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <b>ReLU (Rectified Linear Unit):</b> $f(x) = \max(0, x)$
+                        <ul>
+                            <li>Bent function (at $x = 0$) with range $0$ to $\infty$.</li>
+                            <li>Not differentiable at $x = 0$, but this is a single point (which occurs rarely in floating point values). We can just define the derivative as $0$ (left limit) or $1$ (right limit).</li>
+                            <li>Often yields better gradients for hidden layers because it doesn't flatten out at large values.</li>
+                            <li>Computationally more efficient than sigmoid when range restriction isn't needed.</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="text-block">
+                <h2>Training the Network — Introduction</h2>
+                <p>
+                    We can train the network by initializing $W_i$ and $b_i$ with random values and running an iterative process to improve the network through multiple training steps. But first, we need to define a way to quantify how well our network is performing compared to the expected outputs. For this, we can define an error function $E(p)$, where $p$ is a vector composed of all <b>parameters</b> across all $W_i$ and $b_i$. In general, we define $E(p)$ as the average squared error across all training examples:
+                </p>
+                <p>
+                    <span class="minor">Let $T$ be the set of (input, output) pairs across all training examples. $E_{x,y}(p)$ is the error for just one example $(x,y) \in T$. Let $a_n$ be the output using the input $a_0 = x$ and the current parameters $p$.</span>
+                </p>
+                <p class="eqn-big">
+                    $$
+                    E(p) = \frac{1}{|T|} \sum_{(x, y) \in T} E_{x,y}(p)
+                    $$
+                </p>
+                <p class="eqn-big">
+                    $$
+                    E_{x,y}(p) = \left|a_n - y\right|^2
+                    $$
+                </p>
+                <p>
+                    Then we can use a method called gradient descent to try to alter $p$ to minimize $E(p)$. Suppose there are $N$ parameters, so $p = [p_1, \dots, p_N]$. The gradient vector $\nabla E(p)$ is defined as:
+                </p>
+                <p class="eqn-big">
+                    $$\nabla E(p) = [\frac{\partial E(p)}{\partial p_1}, \dots, \frac{\partial E(p)}{\partial p_N}]$$
+                </p>
+                <p>
+                    $\nabla E(p)$ points in the direction of greatest increase of $E(p)$ and its magnitude is proportional to the rate of increase. So to minimize $E(p)$, we can subtract some multiple of $\nabla E(p)$ from $p$, which we can call the <b>learning rate</b> $\alpha$.
+                </p>
+                <h3>Randomly Initializing the Parameters</h3>
+                <p>
+                    Before we start training, we must randomly initialize the parameters. This random initialization should satisfy some properties:
+                </p>
+                <ul>
+                    <li>$W_i$ must be randomly initialized to avoid symmetry in the network. Otherwise, the parameters may result in similar gradient behaviour.</li>
+                    <li>The variance of $a_i$ should be roughly equal to the variance of $a_{i-1}$ to ensure a stable distribution throughout the network.</li>
+                    <li>Biases $b_i$ should generally be initialized close to $\vec{0}$.</li>
+                </ul>
+                <blockquote>
+                    We can analyze how to tune the random initialization so that it optimizes variance stability in a later section.
+                </blockquote>
+                <h2>Training the Network — Computing the Gradient</h2>
+                <p>
+                    To compute $\nabla E(p)$, we need to calculate $\frac{\partial E(p)}{\partial p_i}$ for every parameter $p_i$. However, that would require a lot of variables, so we can define how to take partial derivatives with respect to entire vectors $b_i$ and matrices $W_i$.
+                </p>
+                <p>
+                    We have the following cases:
+                </p>
+                <ul>
+                    <li>
+                        <p>
+                            For a scalar $y$ and vector or (flattened) matrix $x = [x_1, \dots, x_n]$, we want to define $\frac{\partial y}{\partial x}$ as $[\frac{\partial y}{\partial x_1}, \dots, \frac{\partial y}{\partial x_n}]$ to represent how each element of $x$ affects $y$.
+                        </p>
+                        <blockquote>
+                            <p>
+                                We can chain this derivative to a previous scalar result using scalar multiplication.
+                            </p>
+                            <p>
+                                For $f \in \mathbb{R}$:
+                                <br>
+                                $(\forall i \in \{1, \dots, n\}, \frac{df}{dx_i} = \frac{df}{dy} \cdot \frac{dy}{dx_i}) \iff \frac{df}{dx} = \frac{df}{dy} \cdot \frac{dy}{dx}$.
+                            </p>
+                        </blockquote>
+                    </li>
+                    <li>
+                        <p>
+                            For a vector $y \in \mathbb{R}^n$ and vector $x \in \mathbb{R}^m$, we can define the derivative $\frac{\partial y}{\partial x}$ as a matrix $D$ such that $\partial y = \partial x \cdot D$.
+                        </p>
+                        <p>
+                            $$
+                            [\partial y_1, \dots, \partial y_n] = [\partial x_1, \dots, \partial x_m] \cdot D \iff D = \begin{bmatrix}
+                            \frac{\partial y_1}{\partial x_1} & \dots & \frac{\partial y_n}{\partial x_1} \\
+                            \vdots & \ddots & \vdots \\
+                            \frac{\partial y_1}{\partial x_m} & \dots & \frac{\partial y_n}{\partial x_m}
+                            \end{bmatrix}
+                            $$
+                        </p>
+                        <blockquote>
+                            <p>
+                                We can chain this derivative to a previous vector or matrix result using matrix multiplication.
+                            </p>
+                            <p>
+                                For $f \in \mathbb{R} \cup \mathbb{R}^n$:
+                                <br>
+                                $\frac{df}{dx} = \frac{df}{dy} \cdot D^T$.
+                            </p>
+                            <p>
+                                But in the simpler case where $D$ is a diagonal square matrix, we can flatten the result into a vector and use element-wise multiplication ($\odot$):
+                                <br>
+                                $m = n \land (\forall i, j \in \{1, \dots, n\}, i \ne j \implies D_{i,j} = 0) \iff \frac{df}{dx} = \frac{df}{dy} \odot \text{diag}(D)$.
+                            </p>
+                        </blockquote>
+                    </li>
+                    <li>
+                        <p>
+                            The last case that we need to account for here is $y = a_i \in \mathbb{R}^K$ and $x = W_i \in \mathbb{R}^{J \times K}$. Formally speaking, the general derivative of a vector with respect to a matrix is a 3-D tensor consisting of every partial derivative across elements of $y$ and $x$. But this is computationally expensive.
+                        </p>
+                        <p>
+                            However, notice that $(W_i)_{j,k}$ only impacts the value of $(a_i)_k$ based on the value of $(a_{i-1})_j$ and $(b_i)_k$, so the non-diagonal tensor fields simply evaluate to $0$. We can flatten the result into a matrix $\text{diag}(D)$ that we can define as:
+                        </p>
+                        <p>
+                            $$
+                            \begin{aligned}
+                            \text{diag}(D) &= \begin{bmatrix}
+                            (a_{i-1})_1 f'[(z_i)_1] & \dots & (a_{i-1})_1 f'[(z_i)_K] \\
+                            \vdots & \ddots & \vdots \\
+                            (a_{i-1})_J f'[(z_i)_1] & \dots & (a_{i-1})_J f'[(z_i)_K]
+                            \end{bmatrix}
+                            \end{aligned}
+                            $$
+                        </p>
+                        <blockquote>
+                            <p>
+                                We can chain this flattened derivative to a previous matrix result using element-wise multiplication ($\odot$) on corresponding element pairs whose values depend on each other.
+                            </p>
+                        </blockquote>
+                    </li>
+                </ul>
+                <h3>Partial Derivative of the Biases</h3>
+                <blockquote>
+                    We will start by considering $E(p)$ for a single training example and add up errors later.
+                </blockquote>
+                <p>
+                    For the last layer $i = n$:
+                </p>
+                <p class="eqn-big">
+                    $$
+                    \begin{aligned}
+                    \frac{\partial E(p)}{\partial b_n} &= \frac{\partial E(p)}{\partial a_n} \cdot \frac{\partial a_n}{\partial b_n} \\
+                    &= \frac{\partial}{\partial a_n} \left[\sum_{i=1}^{O} [(a_n)_i - y_i]^2\right] \cdot \frac{\partial}{\partial b_n} f(z_n) \\
+                    &= 2(a_n - y) \odot f'(z_n)
+                    \end{aligned}
+                    $$
+                </p>
+                <p>
+                    For $1 \le i \lt n$:
+                </p>
+                <p class="eqn-big">
+                    $$
+                    \begin{aligned}
+                    \frac{\partial E(p)}{\partial b_i} &= \frac{\partial E(p)}{\partial a_n} \cdot \frac{\partial a_n}{\partial a_i} \cdot \frac{\partial a_i}{\partial b_i} \\
+                    &= 2(a_n - y) \cdot \frac{\partial a_n}{\partial a_i} \odot f'(z_i)
+                    \end{aligned}
+                    $$
+                </p>
+                <h3>Partial Derivative of the Weights</h3>
+                <blockquote>
+                    <p>Define:</p>
+                    <p>
+                        $$
+                        D_{i,J,K} = \begin{bmatrix}
+                        (a_{i-1})_1 f'[(z_i)_1] & \dots & (a_{i-1})_1 f'[(z_i)_K] \\
+                        \vdots & \ddots & \vdots \\
+                        (a_{i-1})_J f'[(z_i)_1] & \dots & (a_{i-1})_J f'[(z_i)_K]
+                        \end{bmatrix}
+                        $$
+                    </p>
+                    <p>
+                        $$
+                        \text{copy_row}_{N}([x_1, \dots x_n]) = \begin{bmatrix}
+                        x_1 & \dots & x_n \\
+                        \vdots & \ddots & \vdots \\
+                        x_1 & \dots & x_n
+                        \end{bmatrix} \in \mathbb{R}^{N \times n}
+                        $$
+                    </p>
+                    <p>
+                        $$
+                        \text{copy_col}_{N}([x_1, \dots x_n]) = \begin{bmatrix}
+                        x_1 & \dots & x_1 \\
+                        \vdots & \ddots & \vdots \\
+                        x_n & \dots & x_n
+                        \end{bmatrix} \in \mathbb{R}^{n \times N}
+                        $$
+                    </p>
+                </blockquote>
+                <p>
+                    For the last layer $i = n$:
+                </p>
+                <p class="eqn-big">
+                    $$
+                    \begin{aligned}
+                    \frac{\partial E(p)}{\partial W_n} &= \frac{\partial E(p)}{\partial a_n} \cdot \frac{\partial a_n}{\partial W_n} \\
+                    &= 2(a_n - y) \cdot \frac{\partial}{\partial W_n} f(z_n) \\
+                    &= \text{copy_row}_{H}(2(a_n - y)) \odot D_{n, H, O}
+                    \end{aligned}
+                    $$
+                </p>
+                <p>
+                    For $1 \lt i \lt n$:
+                </p>
+                <p class="eqn-big">
+                    $$
+                    \begin{aligned}
+                    \frac{\partial E(p)}{\partial W_i} &= \frac{\partial E(p)}{\partial a_n} \cdot \frac{\partial a_n}{\partial a_i} \cdot \frac{\partial a_i}{\partial W_i} \\
+                    &= \text{copy_row}_{H}(2(a_n - y) \cdot \frac{\partial a_n}{\partial a_i}) \odot D_{i, H, H}
+                    \end{aligned}
+                    $$
+                </p>
+                <p>
+                    For the first layer $i = 1$:
+                </p>
+                <p class="eqn-big">
+                    $$
+                    \begin{aligned}
+                    \frac{\partial E(p)}{\partial W_1} &= \frac{\partial E(p)}{\partial a_n} \cdot \frac{\partial a_n}{\partial a_1} \cdot \frac{\partial a_1}{\partial W_1} \\
+                    &= \text{copy_row}_{I}(2(a_n - y) \cdot \frac{\partial a_n}{\partial a_1}) \odot D_{1, I, H}
+                    \end{aligned}
+                    $$
+                </p>
+                <h3>The Recursive Part</h3>
+                <p>
+                    Notice that $\frac{\partial a_n}{\partial a_i}$ is shared across the derivatives for each layer and can be computed recursively.
+                </p>
+                <blockquote>
+                    <p>Define:</p>
+                    <p>
+                        $$
+                        \mathcal{D}_{i,J,K} = \begin{bmatrix}
+                        (W_i)_{1,1} f'[(z_i)_1] & \dots & (W_i)_{1,K} f'[(z_i)_K] \\
+                        \vdots & \ddots & \vdots \\
+                        (W_i)_{J,1} f'[(z_i)_1] & \dots & (W_i)_{J,K} f'[(z_i)_K]
+                        \end{bmatrix}
+                        $$
+                    </p>
+                </blockquote>
+                <p class="eqn-big">
+                    $$
+                    \begin{aligned}
+                    \frac{\partial a_i}{\partial a_{i-1}} &= \begin{cases}
+                    \mathcal{D}_{i, I, H} &\text{ for } i = 1 \\
+                    \mathcal{D}_{i, H, H} &\text{ for } 1 \lt i \lt n \\
+                    \mathcal{D}_{i, H, O} &\text{ for } i = n
+                    \end{cases}
+                    \end{aligned}
+                    $$
+                </p>
+                <p>
+                    So we obtain the recursive formula:
+                </p>
+                <p class="eqn-big">
+                    $$
+                    \begin{aligned}
+                    \frac{\partial a_n}{\partial a_n} = I_O \quad \text{(base case),} \quad
+                    \frac{\partial a_n}{\partial a_{i-1}} = \frac{\partial a_n}{\partial a_{i}} \cdot \mathcal{D}_{i,*,*}^{T} \quad \text{for } 1 \le i \le n
+                    \end{aligned}
+                    $$
+                </p>
+                <h3>Multiple Training Examples</h3>
+                <p>
+                    The parts that change with each training example $(x, y)$ are:
+                </p>
+                <ul>
+                    <li>$y$, the target output</li>
+                    <li>$x = a_0$, the input, which impacts $a_1, \dots, a_n$</li>
+                </ul>
+                <p>
+                    So each part involving these variables must be computed seperately for each training example.
+                </p>
+                <h3>Algorithm</h3>
+                <p>Not necessarily optimized:</p>
+                <ol>
+                    <li>
+                        For each $(x, y) \in T$:
+                        <ol>
+                            <li>Compute $z_0, \dots, z_n$ and $a_0, \dots, a_n$</li>
+                            <li>Compute $2(a_n - y)$</li>
+                            <li>Initialize $\frac{\partial a_n}{\partial a_i}$ to $I_O$ for $i = n$</li>
+                            <li>
+                                For each layer $i = n, \dots, 1$:
+                                <ol>
+                                    <li>Compute $f'(z_i)$ and $D_{i,*,*}$</li>
+                                    <li>Put everything together to get $\frac{\partial E(p)}{\partial b_i}$ and $\frac{\partial E(p)}{\partial W_i}$ for that $(x, y)$ and store the answers in the partial gradient for $(x, y)$</li>
+                                    <li>Multiply $\frac{\partial a_n}{\partial a_i}$ by $\mathcal{D}_{i,*,*}^{T}$ for the next iteration</li>
+                                </ol>
+                            </li>
+                            <li>Multiply the partial gradient by $\frac{1}{|T|}$</li>
+                        </ol>
+                    </li>
+                    <li>Add all partial gradient entries to get a total gradient</li>
+                </ol>
+            </div>
+            <div class="text-block">
+                <h2>Tuning the Training Parameters</h2>
+                <p>
+                    Values that we must tune include the learning rate and the initial parameters.
+                </p>
+                <h3>Distributing the Initial Parameters</h3>
+                <p>
+                    Previously, we stated that the variance of each layer should remain roughly stable. But it's difficult to stabilize the variance across layers in the general case, so we can <b>normalize input</b> to a <b>solved case</b> (<b>mean of $0$</b>, <b>variance of $1$</b>). We can approximate the variance of $\text{sigmoid}(x)$ as behaving like $x$ in this range and show that $\text{relu}(x)$ halves the variance of $x$. Using pre-solved variances and standard initialization techniques:
+                </p>
+                <ul>
+                    <li>
+                        If using $f = \text{sigmoid}$, we choose $\text{Var}(W_i) = \frac{2}{n_{\text{in}} + n_{\text{out}}}$
+                    </li>
+                    <li>
+                        If using $f = \text{relu}$, we choose $\text{Var}(W_i) = \frac{2}{n_{\text{in}}}$
+                    </li>
+                </ul>
+                <h3>Selecting the Learning Rate</h3>
+                <p>
+                    Unfortunately, there isn't a mathematical formula for the optimal learning rate as it depends on the dataset. One thing that can be done is to test the rate of gradient descent (up to a limited depth) on various values (eg. $\alpha = 0.1$ to $\alpha = 10$). This can be done recursively on smaller ranges.
+                </p>
+            </div>
+
+            <!--footer-->
+            <div id="footer">
+                <script src="/src/load_footer.js"></script>
+            </div>
+        </div>
+
+        <div class="modal-group">
+            <div id="path-search">
+                <script src="/src/setup_path_search.js"></script>
+            </div>
+        </div>
+
+        <!--scripts-->
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                hljs.highlightAll();
+            });
+        </script>
+    </body>
+</html>

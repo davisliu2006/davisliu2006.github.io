@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="540" height="440" viewBox="110 10 540 440" fill="none" role="img">
+    <defs>
+        <linearGradient id="flow" x1="230" y1="230" x2="530" y2="230" gradientUnits="userSpaceOnUse">
+            <stop offset="0" stop-color="#c8c8c8"/>
+            <stop offset="1" stop-color="#96c8fa"/>
+        </linearGradient>
+        <marker id="arrow-in" markerUnits="userSpaceOnUse" markerWidth="21" markerHeight="16" refX="18" refY="8" orient="auto">
+            <path d="M0 1 L18 8 L0 15 Z" fill="#c8c8c8"/>
+        </marker>
+        <marker id="arrow" markerUnits="userSpaceOnUse" markerWidth="21" markerHeight="16" refX="18" refY="8" orient="auto">
+            <path d="M0 1 L18 8 L0 15 Z" fill="#96c8fa"/>
+        </marker>
+    </defs>
+
+    <!-- into the input layer, and out of the output layer -->
+    <g stroke="#c8c8c8" stroke-width="4" marker-end="url(#arrow-in)">
+        <line x1="146" y1="155" x2="192" y2="155"/>
+        <line x1="146" y1="305" x2="192" y2="305"/>
+    </g>
+    <g stroke="#96c8fa" stroke-width="4" marker-end="url(#arrow)">
+        <line x1="567" y1="155" x2="614" y2="155"/>
+        <line x1="567" y1="305" x2="614" y2="305"/>
+    </g>
+
+    <!-- connections, input to hidden then hidden to output -->
+    <g stroke="url(#flow)" stroke-width="4" marker-end="url(#arrow)">
+        <line x1="261.3" y1="139.35" x2="346.01" y2="96.99"/>
+        <line x1="261.3" y1="170.65" x2="346.01" y2="213.01"/>
+        <line x1="249.41" y1="184.12" x2="358.92" y2="348.38"/>
+        <line x1="249.41" y1="275.88" x2="358.92" y2="111.62"/>
+        <line x1="261.3" y1="289.35" x2="346.01" y2="246.99"/>
+        <line x1="261.3" y1="320.65" x2="346.01" y2="363.01"/>
+        <line x1="411.3" y1="95.65" x2="496.01" y2="138.01"/>
+        <line x1="399.41" y1="109.12" x2="508.92" y2="273.38"/>
+        <line x1="411.3" y1="214.35" x2="496.01" y2="171.99"/>
+        <line x1="411.3" y1="245.65" x2="496.01" y2="288.01"/>
+        <line x1="399.41" y1="350.88" x2="508.92" y2="186.62"/>
+        <line x1="411.3" y1="364.35" x2="496.01" y2="321.99"/>
+    </g>
+
+    <!-- layers: 2, 3, 2 -->
+    <g fill="#323232" stroke-width="8">
+        <g stroke="#c8c8c8">
+            <circle cx="230" cy="155" r="34"/>
+            <circle cx="230" cy="305" r="34"/>
+        </g>
+        <g stroke="#b7d4f7">
+            <circle cx="380" cy="80" r="34"/>
+            <circle cx="380" cy="230" r="34"/>
+            <circle cx="380" cy="380" r="34"/>
+        </g>
+        <g stroke="#96c8fa">
+            <circle cx="530" cy="155" r="34"/>
+            <circle cx="530" cy="305" r="34"/>
+        </g>
+    </g>
+</svg>
