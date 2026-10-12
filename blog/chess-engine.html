@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <title>Davis Liu - Blog</title>
+        <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon">
+        <link rel="stylesheet" href="/css/global.css">
+        <link rel="stylesheet" href="/css/icons.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.12.0/styles/github-dark.css">
+        <style>
+            
+        </style>
+
+        <!--header scripts-->
+        <script src="/src/global.js"></script>
+        <script src="/src/icons.js"></script>
+        <script src="/src/modals.js"></script>
+        <script src="/src/slideshows.js"></script>
+        <script defer src="/src/mathjax_config.js"></script>
+        <script id="MathJax-script" defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+        <script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.12.0/highlight.min.js"></script>
+    </head>
+
+    <body>
+        <!--global-->
+        <div id="global">
+            <script src="/src/load_global.js"></script>
+        </div>
+
+        <!--main-->
+        <div id="main">
+            <!--info-->
+            <div class="_info">
+                <div id="nav-info">top-bar-blog</div>
+                <div id="path-info">~/blog/chess-engine</div>
+            </div>
+
+            <!--about-->
+            <div id="about" class="text-block">
+                <h1>Making the Chess Engine</h1>
+                <p><span class="minor">
+                    by Davis Liu, Sept 2026
+                </span></p>
+                <div class="image-holder"
+                style="float: right; height: 300px; margin: 0px 0px 30px 30px;">
+                    <img src="/images/other-projects/chess.webp" alt="">
+                </div>
+                <p>
+                    At it's core, a chess engine is a minimax algorithm - a type of algorithm that uses decision trees to play zero-sum turn-based games.
+                </p>
+                <p>
+                    In this category of games, a player attempts to maximize a score relative to all other opponents. This can be done by storing a vector of scores $[s_1, \dots, s_n]$ where each player $i$ tries to maximize $s_i - \max(\{s_j \mid j \ne i\})$ on their turn. In chess, there are two players, so the score can be simplified to a single value $s = s_1-s_2$.
+                </p>
+                <p>
+                    It's often impractical to evaluate the entire game tree, which grows exponentially. So, we can use a heuristic function to estimate the score after playing up to a certain depth.
+                </p>
+                <p>
+                    The general minimax algorithm (not necessarily optimzied):
+                </p>
+<pre><code>using score_t = array&lt;double, N_PLAYERS&gt;;
+
+pair&lt;score_t, move_t&gt; get_best_move(int player, int depth) {
+    pair&lt;score_t, move_t&gt; best = {WORST_SCORE(player), INVALID};
+    for (move_t m: get_moves(player)) {
+        try_move(m);
+        if (depth == 1) {
+            score_t score = evaluate();
+            if (advantage(score, player) > advantage(best.first, player)) {
+                best = {score, m};
+            }
+        } else {
+            pair&lt;double, move_t&gt; result = get_best_move((player+1) % N_PLAYERS, depth-1);
+            if (advantage(result.first, player) > advantage(best.first, player)) {
+                best = result;
+            }
+        }
+        undo_move(m);
+    }
+    return best;
+}</code></pre>
+            </div>
+            <div class="text-block">
+                <h3>The Evaluation Function</h3>
+                <p>
+                    Since the evaluation function is a heuristic, we would like to pick one that is fast to compute and good enough to represent an objective score.
+                </p>
+                <p>
+                    For chess specifically, we can use a combination of the following:
+                </p>
+                <ul>
+                    <li>
+                        If the player has lost, $s_i = -\infty$
+                    </li>
+                    <li>
+                        <b>Material:</b> Assign each piece a material value based on its usefulness
+                    </li>
+                    <li>
+                        <b>Positioning:</b> Some combination of various aspects:
+                        <blockquote>
+                            Suppose you and your opponent have $N_0$ and $N_1$ pieces and $M_0$ and $M_1$ availible moves respectively.
+                        </blockquote>
+                        <ul>
+                            <li>Being in check is generally worse - $O(M_1)$</li>
+                            <li>Having more moves available compared to the opponent generally better - $O(M_0+M_1)$ if it does not account for whose turn it is</li>
+                            <li>Specific rules for specific pieces, such as pawns being closer to the end compared the the opponent's pawns being better - at least $O(N_0+N_1)$</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="text-block">
+                <h3>Parallel Evaluation</h3>
+                <p>
+                    Modern CPUs typically have multiple cores, but a single threaded algorithm only uses one. The score of all moves starting from a given state can be evaluated in parallel, which makes use of hardware concurrency. This can be done using a thread pool, or more simply by allocating a fraction of the moves for each thread. Each thread can receive a copy of the board state to operate on independently.
+                </p>
+            </div>
+
+            <!--footer-->
+            <div id="footer">
+                <script src="/src/load_footer.js"></script>
+            </div>
+        </div>
+
+        <div class="modal-group">
+            <div id="path-search">
+                <script src="/src/setup_path_search.js"></script>
+            </div>
+        </div>
+
+        <!--scripts-->
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                hljs.highlightAll();
+            });
+        </script>
+    </body>
+</html>
