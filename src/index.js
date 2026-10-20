@@ -81,12 +81,23 @@ function indexMain() {
         canvas.width = CX;
         canvas.height = CY;
 
+        let grad;
+        function updateGradient() {
+            grad = ctx.createRadialGradient(CX*0.35,CY*0.4,0, CX*0.35,CY*0.4,CY);
+            grad.addColorStop(0, "rgb(170, 200, 250, 0)");
+            grad.addColorStop(0.5, "rgb(170, 200, 250, 0.14)");
+            grad.addColorStop(0.75, "rgb(170, 200, 250, 0.26)");
+            grad.addColorStop(1, "rgb(170, 200, 250, 0.4)");
+        }
+        updateGradient();
+
         window.addEventListener("resize", function() {
             SCALE = (canvas.clientHeight > 1000? 900/canvas.clientHeight : 1);
             CX = canvas.clientWidth*SCALE;
             CY = canvas.clientHeight*SCALE;
             canvas.width = CX;
             canvas.height = CY;
+            updateGradient();
         })
 
         class Node {
@@ -141,64 +152,89 @@ function indexMain() {
             let dist = Math.sqrt(sq(dx)+sq(dy));
             edgeLen[i] = dist;
         }
-        
-        function draw() {
+
+        /**
+         * @param {number} dt 
+         */
+        function draw(dt) {
+            // step = 1 when fps = 100
+            const step = Math.min(dt, 100)/10;
             ctx.lineWidth = 1;
-            let grad = ctx.createRadialGradient(CX*0.35,CY*0.4,0, CX*0.35,CY*0.4,CY);
-            grad.addColorStop(0, "rgb(170, 200, 250, 0)");
-            grad.addColorStop(0.5, "rgb(170, 200, 250, 0.14)");
-            grad.addColorStop(0.75, "rgb(170, 200, 250, 0.26)");
-            grad.addColorStop(1, "rgb(170, 200, 250, 0.4)");
-            // ctx.strokeStyle = "rgb(170, 200, 250, 0.4)";
             ctx.strokeStyle = grad;
+
+            ctx.beginPath();
             for (let i = 0; i < N_NODE; i++) {
                 let nd = graph[i];
-                ctx.beginPath();
+                ctx.moveTo(nd.x + NODE_R, nd.y);
                 ctx.arc(nd.x, nd.y, NODE_R, 0, Math.PI*2);
-                ctx.stroke();
-                nd.x += nd.vx;
-                nd.y += nd.vy;
-                for (let j = 0; j < N_NODE; j++) {
-                    if (i == j) {continue;}
-                    let nd2 = graph[j];
-                    let dx = nd2.x-nd.x;
-                    let dy = nd2.y-nd.y;
-                    let dist = Math.sqrt(sq(dx)+sq(dy));
-                    // if (dist <= NODE_R*2) { // bounce
-                    //     nd.vx -= dx/dist/dist;
-                    //     nd.vy -= dy/dist/dist;
-                    // }
-                }
+                nd.x += nd.vx*step;
+                nd.y += nd.vy*step;
                 if (nd.y < CY*-0 && nd.vy < 0) {nd.vy *= -1;} // edge bounce
                 else if (nd.y >= CY*1 && nd.vy > 0) {nd.vy *= -1;}
                 if (nd.x < CX*-0 && nd.vx < 0) {nd.vx *= -1;}
                 else if (nd.x >= CX*1 && nd.vx > 0) {nd.vx *= -1;}
             }
+            ctx.stroke();
+
+            ctx.beginPath();
             for (let i = 0; i < N_EDGE; i++) {
                 let edge = edges[i];
                 let u = graph[edge.u];
                 let v = graph[edge.v];
-                ctx.beginPath();
                 ctx.moveTo(u.x, u.y);
                 ctx.lineTo(v.x, v.y);
-                ctx.stroke();
                 const TENSION = 0.0001; // tension
                 const DIST = edgeLen[i];
                 let dx = v.x-u.x;
                 let dy = v.y-u.y;
                 let dist = Math.sqrt(sq(dx)+sq(dy));
-                u.vx += dx/dist*(dist-DIST)*TENSION;
-                u.vy += dy/dist*(dist-DIST)*TENSION;
-                v.vx -= dx/dist*(dist-DIST)*TENSION;
-                v.vy -= dy/dist*(dist-DIST)*TENSION;
+                u.vx += dx/dist*(dist-DIST)*TENSION*step;
+                u.vy += dy/dist*(dist-DIST)*TENSION*step;
+                v.vx -= dx/dist*(dist-DIST)*TENSION*step;
+                v.vy -= dy/dist*(dist-DIST)*TENSION*step;
             }
+            ctx.stroke();
         }
-        function drawLoop() {
-            ctx.clearRect(0, 0, 100000, 100000);
-            draw();
-            setTimeout(drawLoop, 10);
+
+        let t0 = 0;
+        let frameId = 0;
+        let visible = true;
+        /**
+         * @param {number} now 
+         */
+        function drawLoop(now) {
+            frameId = 0;
+            const dt = t0 ? now-t0 : 10;
+            t0 = now;
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            draw(dt);
+            frameId = requestAnimationFrame(drawLoop);
         }
-        drawLoop();
+
+        // handle dynamically starting and stopping animation (optimization)
+        function startLoop() {
+            if (frameId || document.hidden || !visible) {return;}
+            t0 = 0;
+            frameId = requestAnimationFrame(drawLoop);
+        }
+        function stopLoop() {
+            if (frameId) {cancelAnimationFrame(frameId);}
+            frameId = 0;
+        }
+
+        // stop the animation if it isn't visible
+        const intersectionObs = new IntersectionObserver(function(entries) {
+            visible = entries[0].isIntersecting;
+            if (visible) {startLoop();} else {stopLoop();}
+        });
+        intersectionObs.observe(canvas);
+
+        // stop the animation outside of the tab
+        document.addEventListener("visibilitychange", function() {
+            if (document.hidden) {stopLoop();} else {startLoop();}
+        });
+
+        startLoop();
     }
     canvasAnimation();
 }
