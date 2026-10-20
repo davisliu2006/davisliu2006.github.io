@@ -7,7 +7,9 @@
         
         <title>Davis Liu - Blog</title>
         <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon">
+        <link rel="stylesheet" href="/css/base.css">
         <link rel="stylesheet" href="/css/global.css">
+        <link rel="stylesheet" href="/css/components.css">
         <link rel="stylesheet" href="/css/icons.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.12.0/styles/github-dark.css">
@@ -84,7 +86,7 @@ pair&lt;score_t, move_t&gt; get_best_move(int player, int depth) {
 }</code></pre>
             </div>
             <div class="text-block">
-                <h3>The Evaluation Function</h3>
+                <h2 class="heading-anim">The Evaluation Function</h2>
                 <p>
                     Since the evaluation function is a heuristic, we would like to pick one that is fast to compute and good enough to represent an objective score.
                 </p>
@@ -112,7 +114,7 @@ pair&lt;score_t, move_t&gt; get_best_move(int player, int depth) {
                 </ul>
             </div>
             <div class="text-block">
-                <h3>Parallel Evaluation</h3>
+                <h2 class="heading-anim">Parallel Evaluation</h2>
                 <p>
                     Modern CPUs typically have multiple cores, but a single threaded algorithm only uses one. The score of all moves starting from a given state can be evaluated in parallel, which makes use of hardware concurrency. This can be done using a thread pool, or more simply by allocating a fraction of the moves for each thread. Each thread can receive a copy of the board state to operate on independently.
                 </p>

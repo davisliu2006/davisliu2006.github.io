@@ -7,7 +7,9 @@
         
         <title>Davis Liu - Blog</title>
         <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon">
+        <link rel="stylesheet" href="/css/base.css">
         <link rel="stylesheet" href="/css/global.css">
+        <link rel="stylesheet" href="/css/components.css">
         <link rel="stylesheet" href="/css/icons.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.12.0/styles/github-dark.css">
@@ -55,7 +57,9 @@
                 <p>
                     A neural network consists of layers of neurons where the activation level of neurons in each layer are determined by the activation levels of the previous layer. Each layer of $n$ neurons can be modelled as an $n$-dimensional vector where the transitions between layers are done by applying transformations to the vector.
                 </p>
-                <h2>Modeling the Neural Network</h2>
+            </div>
+            <div class="text-block">
+                <h2 class="heading-anim">Modeling the Neural Network</h2>
                 <blockquote>
                     For this analysis, we will use the row vector convention rather than the typical column vector convention used in most mathematics. So $\vec{v}T$ means apply $T$ transformation to $\vec{v}$, which is more consistent with the semantics of operators in programming and allows in place operations such as <code>v *= M</code>.
                 </blockquote>
@@ -113,7 +117,7 @@
                 </ul>
             </div>
             <div class="text-block">
-                <h2>Training the Network — Introduction</h2>
+                <h2 class="heading-anim">Training the Network — Introduction</h2>
                 <p>
                     We can train the network by initializing $W_i$ and $b_i$ with random values and running an iterative process to improve the network through multiple training steps. But first, we need to define a way to quantify how well our network is performing compared to the expected outputs. For this, we can define an error function $E(p)$, where $p$ is a vector composed of all <b>parameters</b> across all $W_i$ and $b_i$. In general, we define $E(p)$ as the average squared error across all training examples:
                 </p>
@@ -151,7 +155,7 @@
                 <blockquote>
                     We can analyze how to tune the random initialization so that it optimizes variance stability in a later section.
                 </blockquote>
-                <h2>Training the Network — Computing the Gradient</h2>
+                <h2 class="heading-anim">Training the Network — Computing the Gradient</h2>
                 <p>
                     To compute $\nabla E(p)$, we need to calculate $\frac{\partial E(p)}{\partial p_i}$ for every parameter $p_i$. However, that would require a lot of variables, so we can define how to take partial derivatives with respect to entire vectors $b_i$ and matrices $W_i$.
                 </p>
@@ -393,7 +397,7 @@
                 </ol>
             </div>
             <div class="text-block">
-                <h2>Tuning the Training Parameters</h2>
+                <h2 class="heading-anim">Tuning the Training Parameters</h2>
                 <p>
                     Values that we must tune include the learning rate and the initial parameters.
                 </p>

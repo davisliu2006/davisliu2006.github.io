@@ -21,9 +21,12 @@ async function setupPathSearch() {
         "~/home/about": "/index.html#about",
         "~/home/projects": "/index.html#projects",
         "~/home/portfolio": "/index.html#portfolio",
+        "~/blog": "/blog.html",
         "~/contact": "/contact.html",
         "~/about/cp": "/about/competitive-programming.html",
         "~/about/web-design": "/about/web-design.html",
+        "~/blog/neural-network": "/blog/neural-network.html",
+        "~/blog/chess-engine": "/blog/chess-engine.html",
         "~/error/page-DNE": "/404.html",
         "~/segfault": "/segfault.html",
     }
@@ -85,6 +88,20 @@ async function setupPathSearch() {
                     return aSubIdx - bSubIdx;
                 }
             });
+        } else {
+            let currWords = path.innerHTML.toLowerCase().split(/[~\/]+/).filter(part => part.length > 0);
+            /**
+             * @param {string} suggestion
+             */
+            function pathMatchScore(suggestion) {
+                let lower = suggestion.toLowerCase();
+                let score = 0;
+                for (let word of currWords) {
+                    if (lower.includes(word)) {score++;}
+                }
+                return score;
+            }
+            suggestions.sort((a, b) => pathMatchScore(b) - pathMatchScore(a));
         }
         suggestions = suggestions.slice(0, 5);
         if (suggestions.length == 0) {

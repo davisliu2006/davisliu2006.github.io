@@ -8,7 +8,9 @@
         
         <title>Davis Liu - Home</title>
         <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon">
+        <link rel="stylesheet" href="/css/base.css">
         <link rel="stylesheet" href="/css/global.css">
+        <link rel="stylesheet" href="/css/components.css">
         <link rel="stylesheet" href="/css/icons.css">
         <link rel="stylesheet" href="/css/projects.css">
         <link rel="stylesheet" href="/css/animations.css">
@@ -160,7 +162,7 @@
                 <div id="about-profile">
                     <img id="about-image" src="/images/profile.jpg" alt="">
                 </div>
-                <h2>About Me</h2>
+                <h2 class="heading-anim">About Me</h2>
                 <p>
                     Hello! My name is Davis and I am a second-year Software Engineering student at the University of Waterloo. I am passionate about STEM fields and their many applications to solving complex problems, particularly those involving computer science.
                 </p>
@@ -197,7 +199,7 @@
 
             <!--projects-->
             <div id="projects" class="text-block">
-                <h2>Projects</h2>
+                <h2 class="heading-anim">Projects</h2>
                 <div class="project-box" id="project-box-neural">
                     <div class="image-holder"
                     style="float: right; height: 240px; margin: 30px 0px 25px 25px;">
@@ -244,7 +246,7 @@
                 </div>
                 <div class="project-box" id="project-box-sopj">
                     <div class="slideshow" id="slideshow-sopj"
-                    style="float: right; height: 220px; margin: 30px 0px 25px 25px;">
+                    style="float: left; height: 220px; margin: 30px 25px 25px 0px;">
                         <div class="slideshow-frame">
                             <div class="slideshow-inner">
                                 <img src="/images/cp/sopj.webp" alt="">
@@ -284,7 +286,7 @@
                 </div>
                 <div class="project-box" id="project-box-chess">
                     <div class="image-holder"
-                    style="float: left; height: 230px; margin: 30px 25px 25px 0px;">
+                    style="float: right; height: 230px; margin: 30px 0px 25px 25px;">
                         <img src="/images/other-projects/chess.webp" alt="">
                     </div>
                     <h3>
@@ -310,7 +312,7 @@
                 </div>
                 <div class="project-box" id="project-box-doorsense">
                     <div class="image-holder"
-                    style="float: right; height: 220px; margin: 30px 0px 25px 25px;">
+                    style="float: left; height: 220px; margin: 30px 25px 25px 0px;">
                         <img src="/images/uw-projects/doorsense.jpg" alt="">
                     </div>
                     <h3>
@@ -336,7 +338,7 @@
                 </div>
                 <div class="project-box" id="project-box-vrc">
                     <div class="slideshow" id="slideshow-vrc"
-                    style="float: left; height: 250px; margin: 30px 25px 25px 0px;">
+                    style="float: right; height: 250px; margin: 30px 0px 25px 25px;">
                         <div class="slideshow-frame">
                             <div class="slideshow-inner">
                                 <img src="/images/robotics/robot1.webp" alt="">
@@ -376,46 +378,43 @@
                         initAnimInView("#project-box-vrc", "fade-in", 1, 2);
                     </script>
                 </div>
-                <div class="project-box" id="project-box-proglib">
-                    <div class="slideshow" id="slideshow-proglib"
-                    style="float: right; height: 200px; margin: 30px 0px 25px 25px;">
-                        <div class="slideshow-frame">
-                            <div class="slideshow-inner">
-                                <img src="/images/robotics/prog-lib.webp" alt="">
-                                <img src="/images/robotics/prog-lib2.webp" alt="">
-                            </div>
-                        </div>
-                        <div class="page-btn" id="lbtn">
-                            <i class="fa-solid fa-arrow-left"></i>
-                        </div>
-                        <div class="page-btn" id="rbtn">
-                            <i class="fa-solid fa-arrow-right"></i>
-                        </div>
-                        <script>
-                            initSlideshow("#projects #slideshow-proglib");
-                        </script>
-                    </div>
-                    <h3>
-                        VEX Robotics Programming Library
-                        <a class="project-link" target="_blank"
-                        href="https://github.com/davisliu2006/UHS_VRC_Template">
-                            GitHub:<span class="var-space"> </span><i class="icon icon-git"></i>
-                        </a>
-                    </h3>
-                    <p>
-                        During my two years at UHS Robotics, we worked on an adaptable programming library for our team's code built with the <a class="link" target="_blank" href="https://pros.cs.purdue.edu/">Perdue PROS API</a>. Our library featured accurate sensing and autonomous driving using self-correcting feedback loops, a simple GUI menu to select different settings, debugging displays for sensors, and various operator-controlled functionality.
-                    </p>
-                    <p>
-                        <span class="minor">Built with: C++, PROS</span>
-                    </p>
-                    <script>
-                        initAnimInView("#project-box-proglib", "fade-in", 1, 2);
-                    </script>
-                </div>
                 <!--see more-->
                 <div id="collapsable-1" class="collapsable">
                     <div class="collapsable-frame">
                         <div class="collapsable-inner">
+                            <div class="project-box" id="project-box-proglib">
+                                <div class="slideshow" id="slideshow-proglib"
+                                style="float: left; height: 200px; margin: 30px 25px 25px 0px;">
+                                    <div class="slideshow-frame">
+                                        <div class="slideshow-inner">
+                                            <img src="/images/robotics/prog-lib.webp" alt="">
+                                            <img src="/images/robotics/prog-lib2.webp" alt="">
+                                        </div>
+                                    </div>
+                                    <div class="page-btn" id="lbtn">
+                                        <i class="fa-solid fa-arrow-left"></i>
+                                    </div>
+                                    <div class="page-btn" id="rbtn">
+                                        <i class="fa-solid fa-arrow-right"></i>
+                                    </div>
+                                    <script>
+                                        initSlideshow("#projects #slideshow-proglib");
+                                    </script>
+                                </div>
+                                <h3>
+                                    VEX Robotics Programming Library
+                                    <a class="project-link" target="_blank"
+                                    href="https://github.com/davisliu2006/UHS_VRC_Template">
+                                        GitHub:<span class="var-space"> </span><i class="icon icon-git"></i>
+                                    </a>
+                                </h3>
+                                <p>
+                                    During my two years at UHS Robotics, we worked on an adaptable programming library for our team's code built with the <a class="link" target="_blank" href="https://pros.cs.purdue.edu/">Perdue PROS API</a>. Our library featured accurate sensing and autonomous driving using self-correcting feedback loops, a simple GUI menu to select different settings, debugging displays for sensors, and various operator-controlled functionality.
+                                </p>
+                                <p>
+                                    <span class="minor">Built with: C++, PROS</span>
+                                </p>
+                            </div>
                             <div class="project-box" id="project-box-guidebot">
                                 <div class="slideshow" id="slideshow-guidebot"
                                 style="float: right; height: 200px; margin: 30px 0px 25px 25px;">
@@ -497,15 +496,6 @@
                             </div>
                             <div class="project-box">
                                 <h3>
-                                    Web Design
-                                    <a class="project-link" target="_blank"
-                                    href="/about/web-design.html">
-                                        Learn more:<span class="var-space"> </span><i class="icon icon-link"></i>
-                                    </a>
-                                </h3>
-                            </div>
-                            <div class="project-box">
-                                <h3>
                                     Competitive Programming
                                     <a class="project-link" target="_blank"
                                     href="/about/competitive-programming.html">
@@ -513,6 +503,15 @@
                                     </a>
                                 </h3>
                             </div>
+                            <!-- <div class="project-box">
+                                <h3>
+                                    Web Design
+                                    <a class="project-link" target="_blank"
+                                    href="/about/web-design.html">
+                                        Learn more:<span class="var-space"> </span><i class="icon icon-link"></i>
+                                    </a>
+                                </h3>
+                            </div> -->
                         </div>
                     </div>
                     <div class="collapsable-btn">
@@ -528,7 +527,7 @@
 
             <!--portfolio-->
             <div id="portfolio" class="text-block">
-                <h2>Portfolio</h2>
+                <h2 class="heading-anim">Portfolio</h2>
                 <p>
                     <a class="link" target="_blank" href="/documents/Resume.pdf">
                         View my resume >>
@@ -611,6 +610,42 @@
                 </div>
                 <script>
                     initModal("#projects #slideshow-vrc .slideshow-frame", "#modal-vrc");
+                </script>
+            </div>
+            <div class="modal" id="modal-chess">
+                <div class="modal-background"></div>
+                <div class="modal-frame">
+                    <div class="modal-bar">
+                        <div class="modal-btn" id="close-btn">
+                            <i class="fa-solid fa-x"></i>
+                        </div>
+                    </div>
+                    <div class="modal-inner">
+                        <div class="image-holder" style="height: 60vh;">
+                            <img src="/images/other-projects/chess.webp" alt="">
+                        </div>
+                    </div>
+                </div>
+                <script>
+                    initModal("#project-box-chess .image-holder", "#modal-chess");
+                </script>
+            </div>
+            <div class="modal" id="modal-doorsense">
+                <div class="modal-background"></div>
+                <div class="modal-frame">
+                    <div class="modal-bar">
+                        <div class="modal-btn" id="close-btn">
+                            <i class="fa-solid fa-x"></i>
+                        </div>
+                    </div>
+                    <div class="modal-inner">
+                        <div class="image-holder" style="height: 60vh;">
+                            <img src="/images/uw-projects/doorsense.jpg" alt="">
+                        </div>
+                    </div>
+                </div>
+                <script>
+                    initModal("#project-box-doorsense .image-holder", "#modal-doorsense");
                 </script>
             </div>
             <div id="path-search">
