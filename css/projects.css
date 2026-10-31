@@ -1,6 +1,6 @@
 /*project box*/
 .project-box {
-    border: solid 1px rgb(200, 200, 200, 0.7);
+    border: solid 1px rgb(var(--outline-light), 0.7);
     border-radius: 10px;
     padding: 0px 25px 0px 25px;
     margin: 15px 0px 15px 0px;
@@ -8,18 +8,18 @@
     transition: border-color 0.5s;
 }
 .project-box:hover {
-    border-color: rgb(200, 200, 200, 0.5);
+    border-color: rgb(var(--outline-light), 0.5);
     transition: border-color 0.5s;
 }
 .project-link {
     margin-left: 10px;
     font-size: 18px;
     font-weight: bold;
-    color: rgb(200, 200, 200, 0.5);
+    color: rgb(var(--text-light), 0.5);
     transition: color 0.5s;
 }
 .project-link:hover {
-    color: rgb(150, 200, 250, 0.5);
+    color: rgb(var(--accent), 0.5);
     transition: color 0.5s;
 }
 .project-box img {

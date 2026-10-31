@@ -9,7 +9,7 @@
     transform: translateY(-50%);
     padding: 5px 5px 5px 5px;
     border-radius: 5px;
-    background-color: rgb(50, 50, 50); opacity: 20%;
+    background-color: rgb(var(--fill-dark)); opacity: 20%;
     transition: opacity 0.3s;
 }
 .slideshow .page-btn:hover {
@@ -17,7 +17,7 @@
     transition: opacity 0.3s;
 }
 .slideshow .page-btn i {
-    color: rgb(200, 200, 200);
+    color: rgb(var(--text-light));
 }
 .slideshow .page-btn#lbtn {
     left: 5px;
@@ -30,7 +30,7 @@
     bottom: 5px; right: 5px;
     padding: 2px 2px 2px 2px;
     border-radius: 5px;
-    background-color: rgb(50, 50, 50); opacity: 20%;
+    background-color: rgb(var(--fill-dark)); opacity: 20%;
     transition: opacity 1s;
 }
 .slideshow:hover .page-counter {
@@ -39,7 +39,7 @@
 }
 .slideshow-frame {
     overflow: hidden;
-    border: solid 1px rgb(200, 200, 200);
+    border: solid 1px rgb(var(--outline-light));
     border-radius: 10px;
     height: 100%; max-width: 100%;
 }
@@ -55,7 +55,7 @@
 .collapsable {
     position: relative;
     overflow: hidden;
-    border: solid 1px rgb(200, 200, 200, 0.7);
+    border: solid 1px rgb(var(--outline-light), 0.7);
     border-radius: 10px;
     padding-top: 42px;
 }
@@ -66,13 +66,13 @@
     width: 100%;
     padding: 10px 0px 10px 0px;
     cursor: pointer;
-    color: rgb(200, 200, 200);
-    background-color: rgb(200, 200, 200, 0);
+    color: rgb(var(--text-light));
+    background-color: rgb(var(--fill-light), 0);
     transition: color 0.3s, background-color 0.3s;
 }
 .collapsable-btn:hover {
-    color: rgb(200, 200, 200, 0.8);
-    background-color: rgb(200, 200, 200, 0.04);
+    color: rgb(var(--text-light), 0.8);
+    background-color: rgb(var(--fill-light), 0.04);
     transition: color 0.3s, background-color 0.3s;
 }
 .collapsable-btn i {
@@ -120,17 +120,17 @@
     position: fixed;
     top: 0px; left: 0px;
     width: 100vw; height: 100vh;
-    background-color: rgb(30, 30, 30, 0.8);
+    background-color: rgb(var(--overlay), 0.8);
 }
 .modal-frame {
     z-index: 1;
     position: fixed;
     top: 50vh; left: 50vw;
     transform: translate(-50%, -50%) scale(0.9);
-    background-color: rgb(50, 50, 50);
+    background-color: rgb(var(--bg-dark));
     padding: 10px 20px 20px 20px;
     border-radius: 10px;
-    border: 1px solid rgb(200, 200, 200, 0.7);
+    border: 1px solid rgb(var(--outline-light), 0.7);
     transition: transform 0.2s;
 }
 .modal.active .modal-frame {
@@ -147,12 +147,12 @@
     margin: 5px 7px 5px 7x;
     font-size: 12px;
     padding: 5px 10px 5px 10px; border-radius: 5px;
-    background-color: rgb(200, 200, 200, 0);
+    background-color: rgb(var(--fill-light), 0);
     transition: background-color 0.3s;
     cursor: pointer;
 }
 .modal-bar .modal-btn:hover {
-    background-color: rgb(200, 200, 200, 0.3);
+    background-color: rgb(var(--fill-light), 0.3);
     transition: background-color 0.3s;
 }
 .modal-inner {

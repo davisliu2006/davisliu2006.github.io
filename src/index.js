@@ -83,11 +83,14 @@ function indexMain() {
 
         let grad;
         function updateGradient() {
+            const OPACITY = 0.5;
             grad = ctx.createRadialGradient(CX*0.35,CY*0.4,0, CX*0.35,CY*0.4,CY);
+            // x^2
             grad.addColorStop(0, "rgb(170, 200, 250, 0)");
-            grad.addColorStop(0.5, "rgb(170, 200, 250, 0.14)");
-            grad.addColorStop(0.75, "rgb(170, 200, 250, 0.26)");
-            grad.addColorStop(1, "rgb(170, 200, 250, 0.4)");
+            grad.addColorStop(0.5, `rgb(170, 200, 250, ${OPACITY*0.25})`);
+            grad.addColorStop(0.75, `rgb(170, 200, 250, ${OPACITY*0.5625})`);
+            grad.addColorStop(0.875, `rgb(170, 200, 250, ${OPACITY*0.7656})`);
+            grad.addColorStop(1, `rgb(170, 200, 250, ${OPACITY})`);
         }
         updateGradient();
 

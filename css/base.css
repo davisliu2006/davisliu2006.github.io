@@ -1,10 +1,23 @@
+:root {
+    --text-light: 220, 220, 220;
+    --outline-light: 200, 200, 200;
+    --fill-light: 200, 200, 200;
+    --bg-dark: 45, 45, 45;
+    --fill-dark: 50, 50, 50;
+    --text-dark: 50, 50, 50;
+    --accent: 150, 200, 250;
+    --overlay: 25, 25, 25;
+    --fill-medium: 100, 100, 100;
+    --transparent: transparent;
+}
+
 html {
     scroll-behavior: smooth;
 }
 body {
     font-family: "Courier New";
-    color: rgb(200, 200, 200);
-    background-color: rgb(50, 50, 50);
+    color: rgb(var(--text-light));
+    background-color: rgb(var(--bg-dark));
 }
 h1 {
     font-size: 36px;
@@ -37,8 +50,8 @@ ul.spaced>li, ol.spaced>li {
 }
 blockquote {
     font-size: 18px; line-height: 1.5;
-    color: rgb(200, 200, 200, 0.5);
-    border-left: 4px solid rgb(200, 200, 200, 0.5);
+    color: rgb(var(--text-light), 0.5);
+    border-left: 4px solid rgb(var(--outline-light), 0.5);
     padding-left: 15px; margin-left: 5px;
 }
 .eqn-big {
@@ -46,19 +59,19 @@ blockquote {
 }
 a {
     text-decoration: none;
-    color: rgb(200, 200, 200, 0.5);
+    color: rgb(var(--text-light), 0.5);
 }
 .link {
     font-weight: bold;
-    color: rgb(200, 200, 200, 0.5);
+    color: rgb(var(--text-light), 0.5);
     transition: color 0.5s;
     /*animation*/
-    /*background-image: linear-gradient(to right, rgb(200, 200, 200, 1) 0%, rgb(200, 200, 200, 1) 50%, rgb(200, 200, 200, 1) 100%);
+    /*background-image: linear-gradient(to right, rgb(var(--text-light), 1) 0%, rgb(var(--text-light), 1) 50%, rgb(var(--text-light), 1) 100%);
     background-position: 0% 100%; background-size: 0% 0px; background-repeat: no-repeat;
     transition: background-size 1s;*/
 }
 .link:hover {
-    color: rgb(150, 200, 250, 0.5);
+    color: rgb(var(--accent), 0.5);
     transition: color 0.5s;
     /*animation*/
     /*background-size: 100% 1px;
